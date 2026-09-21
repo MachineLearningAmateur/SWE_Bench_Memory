@@ -1,0 +1,237 @@
+{
+  "dataset": "SWE-bench/SWE-bench_Verified",
+  "model": "openai/gpt-5.1-codex-mini",
+  "tasks": [
+    "sphinx-doc__sphinx-10449",
+    "django__django-11299"
+  ],
+  "conditions": [
+    "no_memory",
+    "flat_rag",
+    "graph"
+  ],
+  "records": [
+    {
+      "task_id": "sphinx-doc__sphinx-10449",
+      "repo": "sphinx-doc/sphinx",
+      "condition": "no_memory",
+      "official_resolved": true,
+      "grader_run_id": "smoke_remaining_no_memory",
+      "grader_report_path": "openai__gpt-5.1-codex-mini.smoke_remaining_no_memory.json",
+      "exit_status": "Submitted",
+      "error": null,
+      "elapsed_seconds": 209.8584325313568,
+      "patch_sha256": "a317f753b3ac7816b2843a68d95624f07d3e9d36a1cba4407faf96bc1d6dcb3e",
+      "patch_length": 2281,
+      "api_calls": 34,
+      "tokens_total": 693638,
+      "cost_usd": 0.08595824999999999,
+      "retrieval_context_size": 0,
+      "retrieval_mode": "none",
+      "retrieval_seed_ids": null,
+      "flat_extra_chunks_added": null,
+      "graph_relations_followed": null,
+      "graph_neighbor_ids": [],
+      "raw_cited_message_ids": null,
+      "graph_neighbor_chars_used": null,
+      "graph_raw_message_chars_used": null,
+      "graph_backfill_chars_used": null,
+      "trajectory_path": "results/no_memory/sphinx-doc__sphinx-10449/trajectory.json",
+      "retrieval_path": "results/no_memory/sphinx-doc__sphinx-10449/retrieval.json"
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-10449",
+      "repo": "sphinx-doc/sphinx",
+      "condition": "flat_rag",
+      "official_resolved": true,
+      "grader_run_id": "smoke_remaining_flat_rag",
+      "grader_report_path": "openai__gpt-5.1-codex-mini.smoke_remaining_flat_rag.json",
+      "exit_status": "Submitted",
+      "error": null,
+      "elapsed_seconds": 215.1807897090912,
+      "patch_sha256": "cdfa8de2713a30b13ee7cff52ec630cdddc5377ec1e677197d14d34c94547eba",
+      "patch_length": 1328,
+      "api_calls": 39,
+      "tokens_total": 1021946,
+      "cost_usd": 0.09328515,
+      "retrieval_context_size": 24000,
+      "retrieval_mode": "same_corpus_bm25",
+      "retrieval_seed_ids": [
+        "base|node|C012:message:86:call:0#0",
+        "base|node|C045:message:85#0",
+        "base|node|C069:message:39#0",
+        "base|node|C012:message:86#0",
+        "base|node|C045:message:84:call:0#0"
+      ],
+      "flat_extra_chunks_added": 3,
+      "graph_relations_followed": null,
+      "graph_neighbor_ids": [],
+      "raw_cited_message_ids": null,
+      "graph_neighbor_chars_used": null,
+      "graph_raw_message_chars_used": null,
+      "graph_backfill_chars_used": null,
+      "trajectory_path": "results/flat_rag/sphinx-doc__sphinx-10449/trajectory.json",
+      "retrieval_path": "results/flat_rag/sphinx-doc__sphinx-10449/retrieval.json"
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-10449",
+      "repo": "sphinx-doc/sphinx",
+      "condition": "graph",
+      "official_resolved": true,
+      "grader_run_id": "smoke_remaining_graph",
+      "grader_report_path": "openai__gpt-5.1-codex-mini.smoke_remaining_graph.json",
+      "exit_status": "Submitted",
+      "error": null,
+      "elapsed_seconds": 375.5199873447418,
+      "patch_sha256": "79e7f24976399fd42067fb84d7b3b57a7e87ffe9728e1d7a075301b0b1876685",
+      "patch_length": 2023,
+      "api_calls": 54,
+      "tokens_total": 2249213,
+      "cost_usd": 0.16553869999999998,
+      "retrieval_context_size": 24000,
+      "retrieval_mode": "same_bm25_seeds_plus_bounded_edge_traversal",
+      "retrieval_seed_ids": [
+        "base|node|C012:message:86:call:0#0",
+        "base|node|C045:message:85#0",
+        "base|node|C069:message:39#0",
+        "base|node|C012:message:86#0",
+        "base|node|C045:message:84:call:0#0"
+      ],
+      "flat_extra_chunks_added": null,
+      "graph_relations_followed": {
+        "CITES_SOURCE_MESSAGE": 1
+      },
+      "graph_neighbor_ids": [
+        "sem:C012:evidence:86"
+      ],
+      "raw_cited_message_ids": [],
+      "graph_neighbor_chars_used": 2000,
+      "graph_raw_message_chars_used": 0,
+      "graph_backfill_chars_used": 12400,
+      "trajectory_path": "results/graph/sphinx-doc__sphinx-10449/trajectory.json",
+      "retrieval_path": "results/graph/sphinx-doc__sphinx-10449/retrieval.json"
+    },
+    {
+      "task_id": "django__django-11299",
+      "repo": "django/django",
+      "condition": "no_memory",
+      "official_resolved": true,
+      "grader_run_id": "smoke_remaining_no_memory",
+      "grader_report_path": "openai__gpt-5.1-codex-mini.smoke_remaining_no_memory.json",
+      "exit_status": "Submitted",
+      "error": null,
+      "elapsed_seconds": 88.82414197921753,
+      "patch_sha256": "9287769ced093330814f3354f45c6fed20c5d8640e2e8c4dec248da607d960f5",
+      "patch_length": 700,
+      "api_calls": 30,
+      "tokens_total": 287650,
+      "cost_usd": 0.034716300000000005,
+      "retrieval_context_size": 0,
+      "retrieval_mode": "none",
+      "retrieval_seed_ids": null,
+      "flat_extra_chunks_added": null,
+      "graph_relations_followed": null,
+      "graph_neighbor_ids": [],
+      "raw_cited_message_ids": null,
+      "graph_neighbor_chars_used": null,
+      "graph_raw_message_chars_used": null,
+      "graph_backfill_chars_used": null,
+      "trajectory_path": "results/no_memory/django__django-11299/trajectory.json",
+      "retrieval_path": "results/no_memory/django__django-11299/retrieval.json"
+    },
+    {
+      "task_id": "django__django-11299",
+      "repo": "django/django",
+      "condition": "flat_rag",
+      "official_resolved": true,
+      "grader_run_id": "smoke_remaining_flat_rag",
+      "grader_report_path": "openai__gpt-5.1-codex-mini.smoke_remaining_flat_rag.json",
+      "exit_status": "Submitted",
+      "error": null,
+      "elapsed_seconds": 65.07283306121826,
+      "patch_sha256": "9287769ced093330814f3354f45c6fed20c5d8640e2e8c4dec248da607d960f5",
+      "patch_length": 700,
+      "api_calls": 20,
+      "tokens_total": 315569,
+      "cost_usd": 0.026294800000000004,
+      "retrieval_context_size": 24000,
+      "retrieval_mode": "same_corpus_bm25",
+      "retrieval_seed_ids": [
+        "base|node|C033:task#0",
+        "base|node|C033:message:1#0",
+        "semantic|node|sem:C033:task#0",
+        "base|node|C015:message:1#0",
+        "base|node|C039:message:1#0"
+      ],
+      "flat_extra_chunks_added": 3,
+      "graph_relations_followed": null,
+      "graph_neighbor_ids": [],
+      "raw_cited_message_ids": null,
+      "graph_neighbor_chars_used": null,
+      "graph_raw_message_chars_used": null,
+      "graph_backfill_chars_used": null,
+      "trajectory_path": "results/flat_rag/django__django-11299/trajectory.json",
+      "retrieval_path": "results/flat_rag/django__django-11299/retrieval.json"
+    },
+    {
+      "task_id": "django__django-11299",
+      "repo": "django/django",
+      "condition": "graph",
+      "official_resolved": true,
+      "grader_run_id": "smoke_remaining_graph",
+      "grader_report_path": "openai__gpt-5.1-codex-mini.smoke_remaining_graph.json",
+      "exit_status": "Submitted",
+      "error": null,
+      "elapsed_seconds": 80.63868832588196,
+      "patch_sha256": "9287769ced093330814f3354f45c6fed20c5d8640e2e8c4dec248da607d960f5",
+      "patch_length": 700,
+      "api_calls": 24,
+      "tokens_total": 320479,
+      "cost_usd": 0.029958099999999998,
+      "retrieval_context_size": 24000,
+      "retrieval_mode": "same_bm25_seeds_plus_bounded_edge_traversal",
+      "retrieval_seed_ids": [
+        "base|node|C033:task#0",
+        "base|node|C033:message:1#0",
+        "semantic|node|sem:C033:task#0",
+        "base|node|C015:message:1#0",
+        "base|node|C039:message:1#0"
+      ],
+      "flat_extra_chunks_added": null,
+      "graph_relations_followed": {
+        "ASSESSES_AGAINST": 1,
+        "CITES_SOURCE_MESSAGE": 3
+      },
+      "graph_neighbor_ids": [
+        "sem:C015:evidence:1",
+        "sem:C033:evidence:1",
+        "sem:C039:evidence:1",
+        "sem:C033:assessment"
+      ],
+      "raw_cited_message_ids": [],
+      "graph_neighbor_chars_used": 7925,
+      "graph_raw_message_chars_used": 0,
+      "graph_backfill_chars_used": 6475,
+      "trajectory_path": "results/graph/django__django-11299/trajectory.json",
+      "retrieval_path": "results/graph/django__django-11299/retrieval.json"
+    }
+  ],
+  "patch_comparison": {
+    "sphinx-doc__sphinx-10449": {
+      "sha256": {
+        "no_memory": "a317f753b3ac7816b2843a68d95624f07d3e9d36a1cba4407faf96bc1d6dcb3e",
+        "flat_rag": "cdfa8de2713a30b13ee7cff52ec630cdddc5377ec1e677197d14d34c94547eba",
+        "graph": "79e7f24976399fd42067fb84d7b3b57a7e87ffe9728e1d7a075301b0b1876685"
+      },
+      "byte_identical": false
+    },
+    "django__django-11299": {
+      "sha256": {
+        "no_memory": "9287769ced093330814f3354f45c6fed20c5d8640e2e8c4dec248da607d960f5",
+        "flat_rag": "9287769ced093330814f3354f45c6fed20c5d8640e2e8c4dec248da607d960f5",
+        "graph": "9287769ced093330814f3354f45c6fed20c5d8640e2e8c4dec248da607d960f5"
+      },
+      "byte_identical": true
+    }
+  }
+}

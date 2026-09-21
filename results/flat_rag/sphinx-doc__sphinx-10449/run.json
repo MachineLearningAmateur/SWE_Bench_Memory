@@ -1,0 +1,12 @@
+{
+  "instance_id": "sphinx-doc__sphinx-10449",
+  "repo": "sphinx-doc/sphinx",
+  "condition": "flat_rag",
+  "model_name_or_path": "openai/gpt-5.1-codex-mini",
+  "model_patch": "diff --git a/sphinx/ext/autodoc/typehints.py b/sphinx/ext/autodoc/typehints.py\nindex 06768168e..4f9d21f70 100644\n--- a/sphinx/ext/autodoc/typehints.py\n+++ b/sphinx/ext/autodoc/typehints.py\n@@ -28,7 +28,8 @@ def record_typehints(app: Sphinx, objtype: str, name: str, obj: Any,\n             for param in sig.parameters.values():\n                 if param.annotation is not param.empty:\n                     annotation[param.name] = typing.stringify(param.annotation, mode)\n-            if sig.return_annotation is not sig.empty:\n+            if (sig.return_annotation is not sig.empty and\n+                    objtype not in ('class', 'exception')):\n                 annotation['return'] = typing.stringify(sig.return_annotation, mode)\n     except (TypeError, ValueError):\n         pass\ndiff --git a/tests/test_ext_autodoc_configs.py b/tests/test_ext_autodoc_configs.py\nindex fdb82b1b9..c075a8e2d 100644\n--- a/tests/test_ext_autodoc_configs.py\n+++ b/tests/test_ext_autodoc_configs.py\n@@ -1041,9 +1041,6 @@ def test_autodoc_typehints_description_with_documented_init(app):\n             '   Parameters:\\n'\n             '      **x** (*int*) --\\n'\n             '\\n'\n-            '   Return type:\\n'\n-            '      None\\n'\n-            '\\n'\n             '   __init__(x)\\n'\n             '\\n'\n             '      Init docstring.\\n'\n",
+  "exit_status": "Submitted",
+  "elapsed_seconds": 215.1807897090912,
+  "error": null,
+  "trajectory_path": "/workspace/results/flat_rag/sphinx-doc__sphinx-10449/trajectory.json",
+  "retrieval_path": "/workspace/results/flat_rag/sphinx-doc__sphinx-10449/retrieval.json"
+}
