@@ -90,7 +90,7 @@ def augment_problem(problem: str, memory_context: str) -> str:
 
 def _agent_config(cfg: dict, output_path: Path) -> dict:
     deployment = os.environ["AZURE_DEPLOYMENT"]
-    model_name = f"azure/{deployment}"
+    model_name = f"openai/{deployment}"
     base = get_config_from_spec(str(builtin_config_dir / "benchmarks" / "swebench.yaml"))
     override = {
         "agent": {
@@ -106,6 +106,8 @@ def _agent_config(cfg: dict, output_path: Path) -> dict:
                 "drop_params": True,
                 "temperature": cfg["model"].get("temperature", 0),
                 "reasoning": {"effort": cfg["model"].get("reasoning_effort", "medium")},
+                "api_base": os.environ["AZURE_API_BASE"],
+                "api_key": os.environ["AZURE_API_KEY"],
             },
         },
         "environment": {"environment_class": cfg["pilot"].get("environment_class", "docker")},
