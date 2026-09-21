@@ -38,7 +38,11 @@ def load_config(path: str | Path = ROOT / "config" / "experiment.yaml") -> dict:
 
 def check_environment() -> dict:
     load_dotenv(ROOT / ".env")
-    required = ["AZURE_API_KEY", "AZURE_API_BASE", "AZURE_API_VERSION", "AZURE_DEPLOYMENT"]
+    required = [
+        "AZURE_API_KEY",
+        "AZURE_API_BASE",
+        "AZURE_DEPLOYMENT",
+    ]
     return {
         "missing_env": [x for x in required if not os.getenv(x)],
         "azure_deployment": os.getenv("AZURE_DEPLOYMENT", ""),

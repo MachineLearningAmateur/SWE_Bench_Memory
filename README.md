@@ -53,7 +53,21 @@ The first pilot intentionally uses static memory retrieval once at task start. D
 - `src/experiment.py`: mini-SWE-agent runner
 - `src/evaluate.py`: official SWE-bench evaluation command wrapper
 - `config/experiment.yaml`: all important experiment knobs
-- `memory_packages/trajdebug_flat_rag_86_COMPLETE.zip`: populated identical-information memory corpus (**included in the FULL bundle; add it manually when using CODE_ONLY**)
+- `memory_packages/trajdebug_flat_rag_86_COMPLETE.zip`: populated identical-information memory corpus (**not committed to Git**; see *Memory corpus* below)
+
+## Memory corpus
+
+The memory corpus is **not committed to this repository**:
+`memory_packages/trajdebug_flat_rag_86_COMPLETE.zip` and the extracted
+`memory/trajdebug_flat_rag_86/` database are both gitignored. Provide the corpus locally in
+either of these two ways before running the notebooks:
+
+- place the ZIP at `memory_packages/trajdebug_flat_rag_86_COMPLETE.zip` (it is auto-extracted on
+  first use), or
+- keep the already-extracted `memory/trajdebug_flat_rag_86/` directory locally (the code uses it
+  directly).
+
+Do not commit the memory ZIP or the extracted memory database.
 
 ## Reproducibility notes
 
