@@ -6,3 +6,4 @@ results/*
 __pycache__/
 .pytest_cache/
 memory_packages/*.zip
+logs/

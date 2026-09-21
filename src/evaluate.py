@@ -11,8 +11,6 @@ def swebench_eval_command(dataset_name: str, predictions: str | Path, run_id: st
         "--predictions_path", str(predictions),
         "--max_workers", str(max_workers),
         "--run_id", run_id,
-        "--cache_level", "env",
-        "--clean", "True",
     ]
 
 
