@@ -1,0 +1,61 @@
+seed: 42
+
+model:
+  # Actual Azure deployment name is read from AZURE_DEPLOYMENT.
+  model_class: litellm_response
+  reasoning_effort: medium
+  temperature: 0
+  per_run_cost_limit_usd: 2.00
+
+memory:
+  character_budget: 24000
+  flat_top_k: 8
+  graph_seed_k: 8
+  graph_hops: 1
+  graph_max_neighbors: 8
+  # Traversal is deliberately bounded. Chronological NEXT_MESSAGE edges are not followed.
+  allowed_relations:
+    - STATED_DEPENDS_ON
+    - REVIEWS
+    - ASSESSES_AGAINST
+    - COMPARES_WITH_PUBLISHED_LABEL
+    - HAS_END_STATE_ASSESSMENT
+    - QUALIFIED_BY
+    - PROPOSES_CANDIDATE_LESSON
+    - REQUIRES_VALIDATION
+    - CITES_SOURCE_MESSAGE
+    - STATED_MOTIVATES
+    - FOLLOWED_BY_RELEVANT_TEST_PASS
+    - ERROR_PRECEDES_REPAIR_ATTEMPT
+    - FEEDBACK_INTERPRETED_IN
+    - OBSERVED_EDIT_EFFECT
+    - PERSISTS_IN
+    - PERSISTS_IN_RECORDED_DIFF
+    - FEEDBACK_PRECEDES_REPAIR
+    - IMPLEMENTATION_CONFIRMED_BY
+    - REPAIR_CONFIRMED_BY
+    - LOCAL_FAILURE_REPORTED_AFTER
+    - SUCCESS_CLAIM_EXCEEDS_EVIDENCE
+    - PRECEDES_LOCAL_RECOVERY
+    - STATED_JUSTIFIES_RETAINED_STATE
+    - LOCAL_TEST_RECOVERY_AFTER_EDIT
+    - SAME_UNVERIFIED_ASSUMPTION_IN_TEST
+    - INCONSISTENT_PRESENCE_SEMANTICS
+    - OBSERVED_POLICY_TEST_DISAGREEMENT
+    - REPORTED_PROBE_RESULT
+    - OBSERVED_SYNTAX_FAILURE
+    - IMPLEMENTATION_YIELDS_OBSERVED_MISMATCH
+    - CHECK_REPORTS_MISMATCH
+    - CONTRADICTS_COMPLETION_CLAIM
+    - EDIT_CONFIRMED_BY_READBACK
+    - FOLLOWED_BY_ROLLBACK_ATTEMPT
+    - FINAL_DIFF_LEAVES_IDENTIFIED_CONSUMER_UNCHANGED
+
+pilot:
+  conditions: [no_memory, flat_rag, graph]
+  # Start tiny. Raise to ~20 held-out tasks only after smoke testing retrieval + Docker.
+  max_tasks: 3
+  dataset_name: princeton-nlp/SWE-bench_Verified
+  split: test
+  environment_class: docker
+  exclude_memory_repositories: true

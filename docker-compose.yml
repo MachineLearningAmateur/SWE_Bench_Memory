@@ -1,0 +1,13 @@
+services:
+  research:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      # Docker-outside-of-Docker: task containers are created by the host Docker daemon.
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
+      - .env
+    command: sleep infinity

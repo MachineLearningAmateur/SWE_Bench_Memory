@@ -1,0 +1,8 @@
+.env
+memory/
+results/*
+!results/.gitkeep
+.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+memory_packages/*.zip
