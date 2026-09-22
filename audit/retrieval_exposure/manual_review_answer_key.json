@@ -1,0 +1,85 @@
+{
+  "note": "Private answer key. Do NOT share with blinded reviewers. A/B -> flat|graph.",
+  "assignments": {
+    "PerryTS__perry-3982": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "astral-sh__ruff-25414": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "facebook__lexical-8676": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "fallow-rs__fallow-913": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "fathah__hermes-desktop-268": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "floci-io__floci-1325": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "gotd__td-1759": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "ivov__lisette-657": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "kestra-io__kestra-16067": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "ludo-technologies__pyscn-548": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "marimo-team__marimo-9754": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "marimo-team__marimo-9766": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "microsoft__typescript-go-4194": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "microsoft__waza-247": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "nearai__ironclaw-3694": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "openrewrite__rewrite-7784": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "rest-sh__restish-337": {
+      "A": "flat",
+      "B": "graph"
+    },
+    "rust-lang__rust-analyzer-22397": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "ubugeeei-prod__vize-769": {
+      "A": "graph",
+      "B": "flat"
+    },
+    "woodpecker-ci__woodpecker-6623": {
+      "A": "flat",
+      "B": "graph"
+    }
+  }
+}

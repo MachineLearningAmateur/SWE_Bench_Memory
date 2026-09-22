@@ -1,0 +1,38 @@
+{
+  "dataset": "ibragim-badertdinov/swe-rebench-07-2026",
+  "dataset_url": "https://hub.harborframework.com/datasets/ibragim-badertdinov/swe-rebench-07-2026/latest",
+  "dataset_ref": "1",
+  "derived_from": "nebius/SWE-rebench-leaderboard",
+  "api_base": "https://hub.harborframework.com",
+  "tasks_endpoint": "/api/datasets/ibragim-badertdinov/swe-rebench-07-2026/1/tasks",
+  "files_endpoint": "/api/tasks/{org}/{name}/1/files/{path}",
+  "listing_task_count": 111,
+  "available_task_count": 111,
+  "metadata_task_count": 111,
+  "repository_count": 65,
+  "languages": {
+    "go": 21,
+    "java": 21,
+    "python": 20,
+    "rust": 25,
+    "typescript": 24
+  },
+  "task_metadata_sha256": "e18fbd54e334d914ebe2981710ce0f5b9c3b9f169823560aced50a5443eb3a23",
+  "fetched_at": "2026-09-22T00:09:44.171503+00:00",
+  "retained_fields": [
+    "instance_id",
+    "repo",
+    "problem_statement",
+    "language",
+    "created_at"
+  ],
+  "excluded_fields": [
+    "patch",
+    "test_patch",
+    "FAIL_TO_PASS",
+    "PASS_TO_PASS",
+    "install_config",
+    "solution"
+  ],
+  "cached": false
+}
