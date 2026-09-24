@@ -1,0 +1,15 @@
+{
+  "timestamp_utc": "2026-09-24T05:45:12.825380+00:00",
+  "deployment": "openai--gpt-oss-20b",
+  "route_type": "openai_v1",
+  "chat_completions_success": true,
+  "exact_answer": true,
+  "direct_latency_seconds": 2.417,
+  "reasoning_effort_accepted": true,
+  "structured_tool_call": true,
+  "tool_call_latency_seconds": 0.76,
+  "tool_executed": true,
+  "tool_output_returned": true,
+  "final_answer": true,
+  "final_latency_seconds": 0.6
+}

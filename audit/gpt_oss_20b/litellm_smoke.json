@@ -1,0 +1,7 @@
+{
+  "timestamp_utc": "2026-09-24T05:46:32.471693+00:00",
+  "profile": "gpt_oss_20b",
+  "deployment": "openai--gpt-oss-20b",
+  "model_name": "openai/openai--gpt-oss-20b",
+  "native_tool_round_trip": true
+}

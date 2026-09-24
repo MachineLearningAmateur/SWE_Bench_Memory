@@ -1,6 +1,6 @@
 # gpt-oss-20b setup and experiment gates
 
-Status: implementation prepared; no Azure gpt-oss endpoint or Docker daemon was available to this checkout on 2026-09-23. No model calls or benchmark trials have been run.
+Status (2026-09-24): the Foundry gpt-oss deployment is connected. Direct Chat Completions and LiteLLM native tool-call smokes passed; their nonsecret records are in `audit/gpt_oss_20b/`. Docker Desktop and the `research` container started successfully. No benchmark trials have been run. The existing research image is still Python 3.11 and lacks the current `pytest` dependency; rebuild/update the image and add a Harbor-compatible Python runtime before official trials. Host tests passed (96 tests).
 
 ## Run environment
 
