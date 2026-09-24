@@ -1,0 +1,215 @@
+{
+  "dataset": "ibragim-badertdinov/swe-rebench-07-2026",
+  "dataset_url": "https://hub.harborframework.com/datasets/ibragim-badertdinov/swe-rebench-07-2026/latest",
+  "dataset_ref": "1",
+  "task_metadata_sha256": "e18fbd54e334d914ebe2981710ce0f5b9c3b9f169823560aced50a5443eb3a23",
+  "seed": 20260923,
+  "primary_languages": [
+    "python",
+    "typescript",
+    "go"
+  ],
+  "excluded_retrieval_dev_ids": [
+    "ArcadeData__arcadedb-4411",
+    "PerryTS__perry-3982",
+    "Soju06__codex-lb-744",
+    "apache__pulsar-25953",
+    "astral-sh__ruff-25414",
+    "facebook__lexical-8676",
+    "fallow-rs__fallow-913",
+    "fathah__hermes-desktop-268",
+    "floci-io__floci-1235",
+    "floci-io__floci-1325",
+    "gotd__td-1759",
+    "ivov__lisette-657",
+    "kestra-io__kestra-16067",
+    "kubernetes-sigs__kueue-11559",
+    "livekit__agents-5944",
+    "ludo-technologies__pyscn-548",
+    "marimo-team__marimo-9754",
+    "marimo-team__marimo-9766",
+    "microsoft__typescript-go-4194",
+    "microsoft__waza-247",
+    "mui__base-ui-4903",
+    "nearai__ironclaw-3694",
+    "openrewrite__rewrite-7784",
+    "raullenchai__Rapid-MLX-426",
+    "rest-sh__restish-337",
+    "rust-lang__rust-analyzer-22397",
+    "sipeed__picoclaw-2928",
+    "ubugeeei-prod__vize-769",
+    "vuejs__core-14877",
+    "woodpecker-ci__woodpecker-6623"
+  ],
+  "excluded_historical_memory_repositories": [
+    "ansible/ansible",
+    "element-hq/element-web",
+    "future-architect/vuls",
+    "internetarchive/openlibrary",
+    "navidrome/navidrome",
+    "protonmail/webclients",
+    "qutebrowser/qutebrowser"
+  ],
+  "historical_memory_repositories_in_source": [],
+  "eligible_task_count": 48,
+  "partitions": {
+    "calibration": {
+      "tasks": 12,
+      "languages": {
+        "go": 4,
+        "python": 4,
+        "typescript": 4
+      },
+      "repository_count": 12
+    },
+    "pilot": {
+      "tasks": 24,
+      "languages": {
+        "go": 8,
+        "python": 8,
+        "typescript": 8
+      },
+      "repository_count": 23
+    },
+    "reserve": {
+      "tasks": 12,
+      "languages": {
+        "go": 1,
+        "python": 3,
+        "typescript": 8
+      },
+      "repository_count": 7
+    }
+  },
+  "calibration_pilot_repository_overlap": [],
+  "grouping_deviation": "One repeated Go repository within pilot is required: 11 eligible Go repositories for 12 task slots.",
+  "repeated_repositories_within_arms": {
+    "calibration": {},
+    "pilot": {
+      "mvanhorn/cli-printing-press": 2
+    }
+  },
+  "pilot_condition_order": {
+    "nesquena__hermes-webui-3069": [
+      "no_memory",
+      "flat_rag",
+      "graph"
+    ],
+    "teng-lin__notebooklm-py-826": [
+      "flat_rag",
+      "graph",
+      "no_memory"
+    ],
+    "verl-project__verl-6506": [
+      "graph",
+      "no_memory",
+      "flat_rag"
+    ],
+    "marimo-team__marimo-9626": [
+      "no_memory",
+      "flat_rag",
+      "graph"
+    ],
+    "langchain-ai__deepagents-3866": [
+      "flat_rag",
+      "graph",
+      "no_memory"
+    ],
+    "microsoft__apm-1553": [
+      "graph",
+      "no_memory",
+      "flat_rag"
+    ],
+    "pydantic__pydantic-ai-5580": [
+      "no_memory",
+      "flat_rag",
+      "graph"
+    ],
+    "HKUDS__nanobot-4048": [
+      "flat_rag",
+      "graph",
+      "no_memory"
+    ],
+    "mui__base-ui-4849": [
+      "graph",
+      "no_memory",
+      "flat_rag"
+    ],
+    "Martian-Engineering__lossless-claw-814": [
+      "no_memory",
+      "flat_rag",
+      "graph"
+    ],
+    "react-hook-form__react-hook-form-13464": [
+      "flat_rag",
+      "graph",
+      "no_memory"
+    ],
+    "vuejs__core-14897": [
+      "graph",
+      "no_memory",
+      "flat_rag"
+    ],
+    "danny-avila__LibreChat-13166": [
+      "no_memory",
+      "flat_rag",
+      "graph"
+    ],
+    "promptfoo__promptfoo-9313": [
+      "flat_rag",
+      "graph",
+      "no_memory"
+    ],
+    "better-auth__better-auth-10070": [
+      "graph",
+      "no_memory",
+      "flat_rag"
+    ],
+    "ueberdosis__tiptap-7887": [
+      "no_memory",
+      "flat_rag",
+      "graph"
+    ],
+    "apache__dubbo-go-3357": [
+      "flat_rag",
+      "graph",
+      "no_memory"
+    ],
+    "matrixorigin__matrixone-24632": [
+      "graph",
+      "no_memory",
+      "flat_rag"
+    ],
+    "tailscale__tailscale-19847": [
+      "no_memory",
+      "flat_rag",
+      "graph"
+    ],
+    "kubernetes-sigs__kueue-11619": [
+      "flat_rag",
+      "graph",
+      "no_memory"
+    ],
+    "microsoft__typescript-go-4062": [
+      "graph",
+      "no_memory",
+      "flat_rag"
+    ],
+    "Gentleman-Programming__gentle-ai-595": [
+      "no_memory",
+      "flat_rag",
+      "graph"
+    ],
+    "mvanhorn__cli-printing-press-1920": [
+      "flat_rag",
+      "graph",
+      "no_memory"
+    ],
+    "mvanhorn__cli-printing-press-2002": [
+      "graph",
+      "no_memory",
+      "flat_rag"
+    ]
+  },
+  "source_jsonl_sha256": "ee23401b2010b6ce3ffa4b6cc9d6c2c0ab6f661f98b4886cfce53bb1534aac70"
+}

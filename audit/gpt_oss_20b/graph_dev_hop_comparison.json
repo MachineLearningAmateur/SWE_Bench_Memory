@@ -1,0 +1,979 @@
+{
+  "1": {
+    "category_task_counts": {
+      "A": 24
+    },
+    "any_neighbor_tasks": 24,
+    "rows": [
+      {
+        "instance_id": "ArcadeData__arcadedb-4411",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 1,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "PerryTS__perry-3982",
+        "relations": {
+          "ASSESSES_AGAINST": 1,
+          "CITES_SOURCE_MESSAGE": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "Soju06__codex-lb-744",
+        "relations": {
+          "ASSESSES_AGAINST": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 1,
+        "context_chars": 23749
+      },
+      {
+        "instance_id": "apache__pulsar-25953",
+        "relations": {
+          "ASSESSES_AGAINST": 2
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "astral-sh__ruff-25414",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "facebook__lexical-8676",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "fallow-rs__fallow-913",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "fathah__hermes-desktop-268",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "floci-io__floci-1235",
+        "relations": {
+          "ASSESSES_AGAINST": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 1,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "floci-io__floci-1325",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "gotd__td-1759",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ivov__lisette-657",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "kestra-io__kestra-16067",
+        "relations": {
+          "ASSESSES_AGAINST": 1,
+          "CITES_SOURCE_MESSAGE": 2
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 3,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "kubernetes-sigs__kueue-11559",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 1,
+        "context_chars": 23876
+      },
+      {
+        "instance_id": "livekit__agents-5944",
+        "relations": {
+          "ASSESSES_AGAINST": 1,
+          "CITES_SOURCE_MESSAGE": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ludo-technologies__pyscn-548",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "marimo-team__marimo-9754",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "marimo-team__marimo-9766",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 2
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "microsoft__typescript-go-4194",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "microsoft__waza-247",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "mui__base-ui-4903",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 1,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "nearai__ironclaw-3694",
+        "relations": {
+          "ASSESSES_AGAINST": 1,
+          "CITES_SOURCE_MESSAGE": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "openrewrite__rewrite-7784",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 2
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "raullenchai__Rapid-MLX-426",
+        "relations": {
+          "ASSESSES_AGAINST": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 1,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "rest-sh__restish-337",
+        "relations": {
+          "ASSESSES_AGAINST": 1,
+          "CITES_SOURCE_MESSAGE": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "rust-lang__rust-analyzer-22397",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "sipeed__picoclaw-2928",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 1
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 1,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ubugeeei-prod__vize-769",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 2
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "vuejs__core-14877",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "woodpecker-ci__woodpecker-6623",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      }
+    ]
+  },
+  "2": {
+    "category_task_counts": {
+      "A": 24,
+      "B": 1,
+      "C": 1,
+      "D": 1,
+      "E": 2
+    },
+    "any_neighbor_tasks": 24,
+    "rows": [
+      {
+        "instance_id": "ArcadeData__arcadedb-4411",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 2
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "PerryTS__perry-3982",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "Soju06__codex-lb-744",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "apache__pulsar-25953",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "astral-sh__ruff-25414",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "facebook__lexical-8676",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "fallow-rs__fallow-913",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 6,
+          "OBSERVED_POLICY_TEST_DISAGREEMENT": 2
+        },
+        "categories": [
+          "A",
+          "C"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "fathah__hermes-desktop-268",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "floci-io__floci-1235",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "floci-io__floci-1325",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "gotd__td-1759",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ivov__lisette-657",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "kestra-io__kestra-16067",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 6
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 6,
+        "context_chars": 23953
+      },
+      {
+        "instance_id": "kubernetes-sigs__kueue-11559",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 2,
+          "STATED_MOTIVATES": 1
+        },
+        "categories": [
+          "A",
+          "E"
+        ],
+        "neighbors": 3,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "livekit__agents-5944",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ludo-technologies__pyscn-548",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "marimo-team__marimo-9754",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4,
+          "FEEDBACK_PRECEDES_REPAIR": 1,
+          "LOCAL_FAILURE_REPORTED_AFTER": 2,
+          "REPAIR_CONFIRMED_BY": 1
+        },
+        "categories": [
+          "A",
+          "B",
+          "D"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "marimo-team__marimo-9766",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "microsoft__typescript-go-4194",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "microsoft__waza-247",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "mui__base-ui-4903",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 2
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 2,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "nearai__ironclaw-3694",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "openrewrite__rewrite-7784",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "raullenchai__Rapid-MLX-426",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "rest-sh__restish-337",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "rust-lang__rust-analyzer-22397",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "sipeed__picoclaw-2928",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 2,
+          "STATED_MOTIVATES": 1
+        },
+        "categories": [
+          "A",
+          "E"
+        ],
+        "neighbors": 3,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ubugeeei-prod__vize-769",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 4,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "vuejs__core-14877",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "woodpecker-ci__woodpecker-6623",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      }
+    ]
+  },
+  "3": {
+    "category_task_counts": {
+      "A": 24,
+      "B": 2,
+      "C": 2,
+      "D": 1
+    },
+    "any_neighbor_tasks": 24,
+    "rows": [
+      {
+        "instance_id": "ArcadeData__arcadedb-4411",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "PerryTS__perry-3982",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "Soju06__codex-lb-744",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "apache__pulsar-25953",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "astral-sh__ruff-25414",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "facebook__lexical-8676",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "fallow-rs__fallow-913",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 6,
+          "OBSERVED_POLICY_TEST_DISAGREEMENT": 2
+        },
+        "categories": [
+          "A",
+          "C"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "fathah__hermes-desktop-268",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "floci-io__floci-1235",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "floci-io__floci-1325",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "gotd__td-1759",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ivov__lisette-657",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "kestra-io__kestra-16067",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "kubernetes-sigs__kueue-11559",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5,
+          "REPAIR_CONFIRMED_BY": 1
+        },
+        "categories": [
+          "A",
+          "B"
+        ],
+        "neighbors": 6,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "livekit__agents-5944",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ludo-technologies__pyscn-548",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "marimo-team__marimo-9754",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 4,
+          "FEEDBACK_PRECEDES_REPAIR": 1,
+          "LOCAL_FAILURE_REPORTED_AFTER": 2,
+          "REPAIR_CONFIRMED_BY": 1
+        },
+        "categories": [
+          "A",
+          "B",
+          "D"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "marimo-team__marimo-9766",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 6
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 6,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "microsoft__typescript-go-4194",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "microsoft__waza-247",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "mui__base-ui-4903",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 5
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 5,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "nearai__ironclaw-3694",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "openrewrite__rewrite-7784",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 6
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 6,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "raullenchai__Rapid-MLX-426",
+        "relations": {
+          "CHECK_REPORTS_MISMATCH": 2,
+          "CITES_SOURCE_MESSAGE": 5,
+          "IMPLEMENTATION_YIELDS_OBSERVED_MISMATCH": 1
+        },
+        "categories": [
+          "A",
+          "C"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "rest-sh__restish-337",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "rust-lang__rust-analyzer-22397",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "sipeed__picoclaw-2928",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 6
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 6,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "ubugeeei-prod__vize-769",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 6
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 6,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "vuejs__core-14877",
+        "relations": {},
+        "categories": [],
+        "neighbors": 0,
+        "context_chars": 24000
+      },
+      {
+        "instance_id": "woodpecker-ci__woodpecker-6623",
+        "relations": {
+          "CITES_SOURCE_MESSAGE": 8
+        },
+        "categories": [
+          "A"
+        ],
+        "neighbors": 8,
+        "context_chars": 24000
+      }
+    ]
+  }
+}
