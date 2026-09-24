@@ -127,7 +127,7 @@ def main() -> None:
         _load_json(SOURCE / "benchmark_source.json"),
     )
     partitions["manifest"]["source_jsonl_sha256"] = hashlib.sha256(
-        (SOURCE / "source_tasks.jsonl").read_bytes()
+        (SOURCE / "source_tasks.jsonl").read_text(encoding="utf-8").encode("utf-8")
     ).hexdigest()
     files = {
         DEST / f"{name}_task_ids.json": [t["instance_id"] for t in partitions[name]]

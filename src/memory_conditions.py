@@ -663,7 +663,8 @@ class SameInformationMemory:
     def graph(self, query: str, *, seed_k: int = 8, max_chars: int = 24000, hops: int = 1,
               max_neighbors: int = 8, allowed_relations: Iterable[str] = (),
               seed_fraction: float = DEFAULT_SEED_FRACTION, per_seed_chars: int = DEFAULT_PER_SEED_CHARS,
-              per_neighbor_chars: int = DEFAULT_PER_NEIGHBOR_CHARS) -> MemoryResult:
+              per_neighbor_chars: int = DEFAULT_PER_NEIGHBOR_CHARS,
+              semantic_first: bool = False) -> MemoryResult:
         allowed = set(allowed_relations)
         seed = self._select_common_seeds(query, seed_k=seed_k, max_chars=max_chars,
                                          seed_fraction=seed_fraction, per_seed_chars=per_seed_chars)
@@ -672,6 +673,13 @@ class SameInformationMemory:
         used_docs = set(seed.document_ids)
 
         candidates = self._traversal_candidates(seed.rows, hops=hops, allowed=allowed)
+        if semantic_first:
+            # Development-only v2 policy: use the existing deterministic priority
+            # within each bucket, but place substantive relations before provenance
+            # and review scaffolding. Flat still indexes every relation as text.
+            scaffolding = {"CITES_SOURCE_MESSAGE", "REVIEWS", "ASSESSES_AGAINST",
+                           "COMPARES_WITH_PUBLISHED_LABEL"}
+            candidates.sort(key=lambda c: c[0]["relation"] in scaffolding)
         neighbors_added = 0
         neighbor_chars = 0
         raw_messages_inlined = 0
@@ -795,6 +803,7 @@ class SameInformationMemory:
             "hops": hops,
             "max_neighbors": max_neighbors,
             "allowed_relations": sorted(allowed),
+            "semantic_first": semantic_first,
             "graph_traversal": True,
             "per_neighbor_chars": per_neighbor_chars,
             "graph_neighbors_added": neighbors_added,

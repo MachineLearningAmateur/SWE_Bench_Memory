@@ -382,6 +382,7 @@ def run_retrieval_only(memory: SameInformationMemory, task: dict, settings: dict
         hops=settings["graph_hops"],
         max_neighbors=settings["graph_max_neighbors"],
         allowed_relations=settings["allowed_relations"],
+        semantic_first=settings.get("semantic_first", False),
     )
     return TaskRetrieval(task=task, flat_context=flat.context, graph_context=graph.context, flat=flat, graph=graph)
 

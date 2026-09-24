@@ -1,0 +1,3 @@
+# Chosen on the 30 retrieval-development tasks only; never tune on calibration/pilot.
+graph_hops: 2
+semantic_first: true

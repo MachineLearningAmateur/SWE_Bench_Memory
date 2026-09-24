@@ -307,6 +307,27 @@ def test_graph_expands_when_edges_exist(make_db):
     assert result.metadata["relations_followed"] == {"QUALIFIED_BY": 1}
 
 
+def test_semantic_first_prioritizes_substantive_relation(make_db):
+    def build(con):
+        _add_node(con, "ROOT", "widget root")
+        _add_node(con, "CITE", "widget citation")
+        _add_node(con, "END", "widget end state")
+        _add_edge(con, "cite", "ROOT", "CITE", "CITES_SOURCE_MESSAGE")
+        _add_edge(con, "end", "ROOT", "END", "HAS_END_STATE_ASSESSMENT")
+
+    db = make_db(build)
+    with SameInformationMemory(db) as m:
+        _rank_override(m, ["base|node|ROOT"])
+        old = m.graph("widget", seed_k=1, max_chars=6000, max_neighbors=1, hops=1,
+                      allowed_relations=["CITES_SOURCE_MESSAGE", "HAS_END_STATE_ASSESSMENT"])
+        new = m.graph("widget", seed_k=1, max_chars=6000, max_neighbors=1, hops=1,
+                      allowed_relations=["CITES_SOURCE_MESSAGE", "HAS_END_STATE_ASSESSMENT"],
+                      semantic_first=True)
+    assert old.metadata["relations_followed"] == {"CITES_SOURCE_MESSAGE": 1}
+    assert new.metadata["relations_followed"] == {"HAS_END_STATE_ASSESSMENT": 1}
+    assert new.metadata["common_seed_chunk_ids"] == old.metadata["common_seed_chunk_ids"]
+
+
 # 11. Repository / issue exclusions still work.
 def test_exclusions_still_work(make_db):
     def build(con):

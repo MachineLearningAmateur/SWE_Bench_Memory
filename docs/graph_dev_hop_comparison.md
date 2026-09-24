@@ -10,4 +10,4 @@ The only varied parameter was `graph_hops` (1, 2, or 3). All runs retained the p
 | 2 | 24 | 24 | 1 | 1 | 1 | 2 | 0 |
 | 3 | 24 | 24 | 2 | 2 | 1 | 0 | 0 |
 
-Depth alone does not make the graph arm reliably expose the intended relations. No graph-v2 policy is frozen by this check. The 24-task, three-arm pilot remains gated pending a development-only policy with useful exposure and a committed freeze artifact.
+Depth alone did not make the graph arm reliably expose the intended relations. A subsequent development-only semantic-priority policy is frozen in [graph-v2 exposure audit](graph_v2_exposure_audit.md). The pilot remains subject to endpoint, tool-call, official-verifier, and calibration gates.

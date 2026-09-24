@@ -53,7 +53,7 @@ Use `Soju06__codex-lb-744` from the earlier retrieval-development set for the on
 
 ## Gates
 
-Run exactly one no-memory attempt on each of the 12 calibration IDs and record official reward. If 0–2 or 10–12 resolve, stop. If 3–9 resolve, the model passes calibration, but the three-arm pilot still requires a committed post-development graph exposure audit. Graph-v1's 30-task audit shows only provenance/review edges, so it is not pilot-ready. Freeze the final retrieval policy using only those 30 development tasks; never tune on calibration or pilot outcomes.
+Run exactly one no-memory attempt on each of the 12 calibration IDs and record official reward. If 0–2 or 10–12 resolve, stop. If 3–9 resolve, the model passes calibration. The post-development graph-v2 policy is recorded in `docs/graph_v2_exposure_audit.md` and must stay frozen for the exploratory pilot. Never tune retrieval on calibration or pilot outcomes.
 
 Once all gates pass, run 24 tasks × 3 conditions, using the same agent, environment, limits, and static task-start memory retrieval. The condition order is predeclared in `partition_manifest.json`. Preserve each exact retrieval context, metadata, trajectory, official reward, calls, tokens, time, tool calls, and patch hash. Do not fabricate missing pricing or outcomes.
 

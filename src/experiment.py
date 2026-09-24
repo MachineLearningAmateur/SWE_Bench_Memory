@@ -34,7 +34,11 @@ MEMORY_REPOS = {
 
 
 def load_config(path: str | Path = ROOT / "config" / "experiment.yaml") -> dict:
-    return yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+    load_dotenv(ROOT / ".env")
+    cfg = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+    if os.getenv("MODEL_PROFILE") == "gpt_oss_20b":
+        cfg["memory"].update(yaml.safe_load((ROOT / "config" / "graph_v2.yaml").read_text(encoding="utf-8")))
+    return cfg
 
 
 def check_environment() -> dict:
@@ -75,7 +79,8 @@ def _memory_for(condition: str, problem: str, cfg: dict, memory: SameInformation
     if condition == "graph":
         return memory.graph(problem, seed_k=mc["graph_seed_k"], max_chars=mc["character_budget"],
                             hops=mc["graph_hops"], max_neighbors=mc["graph_max_neighbors"],
-                            allowed_relations=mc.get("allowed_relations", []))
+                            allowed_relations=mc.get("allowed_relations", []),
+                            semantic_first=mc.get("semantic_first", False))
     raise ValueError(f"Unknown condition: {condition}")
 
 
