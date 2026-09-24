@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git curl ca-certificates docker-cli build-essential \
+    git curl ca-certificates docker-cli docker-compose build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace

@@ -1,10 +1,10 @@
 # gpt-oss-20b setup and experiment gates
 
-Status (2026-09-24): the Foundry gpt-oss deployment is connected. Direct Chat Completions and LiteLLM native tool-call smokes passed; their nonsecret records are in `audit/gpt_oss_20b/`. Docker Desktop and the `research` container started successfully. No benchmark trials have been run. The existing research image is still Python 3.11 and lacks the current `pytest` dependency; rebuild/update the image and add a Harbor-compatible Python runtime before official trials. Host tests passed (96 tests).
+Status (2026-09-24): the Foundry gpt-oss deployment is connected. Direct Chat Completions and LiteLLM native tool-call smokes passed. The research image now has Python 3.12.14, Harbor 0.23.0, Docker Compose, and 96 passing in-container tests. Harbor resolved the pinned 111-task dataset. The single no-memory development-task plumbing run reached the official verifier, but mini-SWE-agent exited with `RepeatedFormatError` and submitted no patch; see `audit/gpt_oss_20b/plumbing_smoke.json`. This is a protocol/plumbing failure, not a model calibration result. No calibration or pilot tasks have been run. Stop before calibration until the mini-SWE-agent protocol is resolved on development data.
 
 ## Run environment
 
-Use the existing `research` container at `/workspace`. Docker task containers use the host daemon through the mounted socket. Run `docker ps` inside `research`. Do not start a second daemon or run Compose inside that container. If the container must be recreated, run Compose from Windows PowerShell.
+Use the existing `research` container at `/workspace` for repo tests, retrieval, and LiteLLM checks. It can reach the host Docker daemon through the mounted socket. On this Windows Docker Desktop setup, run Harbor itself from Windows PowerShell in an isolated Python 3.12 environment: Docker Desktop cannot resolve Harbor's container-local `/workspace/...` bind-mount sources against the Windows host path. Harbor still starts isolated Linux task containers on the same host daemon. Do not start another daemon or run Compose inside `research`. Recreate the research container only from Windows PowerShell.
 
 Before any model execution:
 
@@ -17,7 +17,7 @@ docker ps
 python -m pytest -q
 ```
 
-The Python tests must pass. The pinned source is `ibragim-badertdinov/swe-rebench-07-2026@1`, with 111 tasks and task metadata SHA256 `e18fbd54e334d914ebe2981710ce0f5b9c3b9f169823560aced50a5443eb3a23`.
+The Python tests must pass. The pinned source is `ibragim-badertdinov/swe-rebench-07-2026@1`, with 111 tasks and task metadata SHA256 `e18fbd54e334d914ebe2981710ce0f5b9c3b9f169823560aced50a5443eb3a23`. The Windows Harbor runner needs the repo root on `PYTHONPATH` to import `src.harbor_mini_agent:PathSafeMiniSweAgent`. That adapter changes only the task-container installation bin path and forwards the existing key under `OPENAI_API_KEY` for LiteLLM; the normal Harbor agent execution and official verifier remain intact. `config/harbor_gpt_oss.yaml` fixes the 60-step Chat Completions profile for any future arms.
 
 ## Foundry deployment
 
