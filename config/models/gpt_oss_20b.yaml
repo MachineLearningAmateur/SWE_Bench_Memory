@@ -1,0 +1,15 @@
+# Populate these env variables from the deployment's actual Consume/sample code.
+# Set GPT_OSS_LITELLM_MODEL_NAME only after verifying the LiteLLM route.
+model_class: litellm
+model_name_env: GPT_OSS_LITELLM_MODEL_NAME
+deployment_env: GPT_OSS_DEPLOYMENT
+api_base_env: GPT_OSS_API_BASE
+api_key_env: GPT_OSS_API_KEY
+reasoning_effort: medium
+# Enable only after the direct smoke confirms this parameter is accepted.
+send_reasoning_effort_env: GPT_OSS_REASONING_EFFORT_SUPPORTED
+temperature: 0
+drop_params: true
+per_run_cost_limit_usd: 0
+step_limit: 60
+wall_time_limit_seconds: 3600

@@ -32,11 +32,11 @@ SWE-bench evaluation is containerized. Running this workspace as a VS Code Dev C
 
 ## Azure model
 
-The model string is built as:
+The default GPT-5.1 model string is built as:
 
 `azure/<AZURE_DEPLOYMENT>`
 
-The default model class is `litellm_response`, suitable for GPT-5-family deployments using LiteLLM's Responses API. If your Azure deployment does not support that path, set `model_class: litellm` in `config/experiment.yaml`.
+The default model class is `litellm_response`, suitable for the existing GPT-5-family deployment. `MODEL_PROFILE=gpt_oss_20b` selects a separate Chat Completions profile without changing the GPT-5.1 settings. See [gpt-oss setup](docs/gpt_oss_20b_setup.md) for the Foundry endpoint smoke, frozen July-2026 partitions, and experiment gates.
 
 ## Important experimental rule
 

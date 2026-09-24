@@ -18,7 +18,8 @@ from minisweagent.run.benchmarks.swebench import DATASET_MAPPING, get_sb_environ
 from minisweagent.utils.serialize import recursive_merge
 
 from .bootstrap import bootstrap_memory
-from .memory_conditions import SameInformationMemory
+from .memory_conditions import MemoryResult, SameInformationMemory
+from .model_profiles import PROFILES, resolve_profile
 
 ROOT = Path(__file__).resolve().parents[1]
 MEMORY_REPOS = {
@@ -38,14 +39,17 @@ def load_config(path: str | Path = ROOT / "config" / "experiment.yaml") -> dict:
 
 def check_environment() -> dict:
     load_dotenv(ROOT / ".env")
-    required = [
-        "AZURE_API_KEY",
-        "AZURE_API_BASE",
-        "AZURE_DEPLOYMENT",
-    ]
+    name = os.getenv("MODEL_PROFILE", "gpt_5_1_codex_mini")
+    if name not in PROFILES:
+        raise ValueError(f"Unknown MODEL_PROFILE: {name}")
+    profile = yaml.safe_load((ROOT / "config" / "models" / f"{name}.yaml").read_text(encoding="utf-8"))
+    required = [profile["api_key_env"], profile["api_base_env"], profile["deployment_env"]]
+    if profile.get("model_name_env"):
+        required.append(profile["model_name_env"])
     return {
         "missing_env": [x for x in required if not os.getenv(x)],
-        "azure_deployment": os.getenv("AZURE_DEPLOYMENT", ""),
+        "model_profile": name,
+        "azure_deployment": os.getenv(profile["deployment_env"], ""),
         "memory_package": str(bootstrap_memory()),
     }
 
@@ -89,44 +93,50 @@ def augment_problem(problem: str, memory_context: str) -> str:
 
 
 def _agent_config(cfg: dict, output_path: Path) -> dict:
-    deployment = os.environ["AZURE_DEPLOYMENT"]
-    model_name = f"openai/{deployment}"
+    profile = resolve_profile()
+    # Preserve the original experiment.yaml knobs for the default GPT-5.1 arm.
+    legacy = cfg.get("model", {}) if profile["profile_name"] == "gpt_5_1_codex_mini" else {}
+    model_kwargs = dict(profile["model_kwargs"])
+    if legacy:
+        model_kwargs["temperature"] = legacy.get("temperature", model_kwargs["temperature"])
+        model_kwargs["reasoning"] = {"effort": legacy.get("reasoning_effort", "medium")}
     base = get_config_from_spec(str(builtin_config_dir / "benchmarks" / "swebench.yaml"))
     override = {
         "agent": {
             "mode": "yolo",
             "confirm_exit": False,
-            "cost_limit": float(cfg["model"].get("per_run_cost_limit_usd", 2.0)),
+            "cost_limit": float(legacy.get("per_run_cost_limit_usd", profile["per_run_cost_limit_usd"])),
             "output_path": output_path,
         },
         "model": {
-            "model_class": cfg["model"].get("model_class", os.getenv("MSWEA_MODEL_CLASS", "litellm_response")),
-            "model_name": model_name,
-            "model_kwargs": {
-                "drop_params": True,
-                "temperature": cfg["model"].get("temperature", 0),
-                "reasoning": {"effort": cfg["model"].get("reasoning_effort", "medium")},
-                "api_base": os.environ["AZURE_API_BASE"],
-                "api_key": os.environ["AZURE_API_KEY"],
-            },
+            "model_class": legacy.get("model_class", profile["model_class"]),
+            "model_name": profile["model_name"],
+            "model_kwargs": model_kwargs,
         },
         "environment": {"environment_class": cfg["pilot"].get("environment_class", "docker")},
     }
+    if profile["step_limit"] is not None:
+        override["agent"]["step_limit"] = int(profile["step_limit"])
+    if profile["wall_time_limit_seconds"] is not None:
+        override["agent"]["wall_time_limit_seconds"] = int(profile["wall_time_limit_seconds"])
     return recursive_merge(base, override)
 
 
 def run_one(instance: dict, condition: str, cfg: dict, *, root: Path = ROOT / "results") -> dict:
     root.mkdir(parents=True, exist_ok=True)
-    package = bootstrap_memory()
-    db = package / "data" / "flat_rag.sqlite"
     run_dir = root / condition / instance["instance_id"]
     run_dir.mkdir(parents=True, exist_ok=True)
     traj_path = run_dir / "trajectory.json"
 
     # Exclude the held-out repository from memory retrieval even when it appears in the historical corpus.
-    excluded = [instance.get("repo")] if instance.get("repo") else []
-    with SameInformationMemory(db, excluded_repositories=excluded) as memory:
-        mem = _memory_for(condition, instance["problem_statement"], cfg, memory)
+    if condition == "no_memory":
+        mem = MemoryResult("no_memory", instance["problem_statement"], "", [], {"retrieval": "none"})
+    else:
+        package = bootstrap_memory()
+        db = package / "data" / "flat_rag.sqlite"
+        excluded = [instance.get("repo")] if instance.get("repo") else []
+        with SameInformationMemory(db, excluded_repositories=excluded) as memory:
+            mem = _memory_for(condition, instance["problem_statement"], cfg, memory)
 
     task = augment_problem(instance["problem_statement"], mem.context)
     agent_cfg = _agent_config(cfg, traj_path)
@@ -158,6 +168,8 @@ def run_one(instance: dict, condition: str, cfg: dict, *, root: Path = ROOT / "r
         "instance_id": instance["instance_id"],
         "repo": instance.get("repo"),
         "condition": condition,
+        "model_profile": os.getenv("MODEL_PROFILE", "gpt_5_1_codex_mini"),
+        "azure_deployment": os.getenv("GPT_OSS_DEPLOYMENT" if os.getenv("MODEL_PROFILE") == "gpt_oss_20b" else "AZURE_DEPLOYMENT"),
         "model_name_or_path": model.config.model_name,
         "model_patch": submission or "",
         "exit_status": exit_status,

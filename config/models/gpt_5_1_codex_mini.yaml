@@ -1,0 +1,9 @@
+model_class: litellm_response
+model_name_prefix: openai/
+deployment_env: AZURE_DEPLOYMENT
+api_base_env: AZURE_API_BASE
+api_key_env: AZURE_API_KEY
+reasoning_effort: medium
+temperature: 0
+drop_params: true
+per_run_cost_limit_usd: 2.0
