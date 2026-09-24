@@ -1,0 +1,31 @@
+{
+  "started_at_utc": "2026-09-24T07:53:03.028443Z",
+  "finished_at_utc": "2026-09-24T07:55:16.389880Z",
+  "benchmark": "ibragim-badertdinov/swe-rebench-07-2026@1",
+  "task_name": "ibragim-badertdinov/Soju06__codex-lb-744",
+  "trial_name": "Soju06__codex-lb-744__xyzyzPH",
+  "task_checksum": "a827589fbeca6b5afdecbb1afd0a59696635974db53e81bad7c0378768cd07cf",
+  "condition": "no_memory",
+  "model_profile": "gpt_oss_20b",
+  "deployment": "openai--gpt-oss-20b",
+  "model_name": "openai/openai--gpt-oss-20b",
+  "mini_swe_agent_version": "2.4.6",
+  "harbor_version": "0.23.0",
+  "test_contract": {
+    "native_tool": "bash",
+    "strict": true,
+    "tool_choice": "required",
+    "parallel_tool_calls": false,
+    "wire_payload_checked_with_local_capture": true,
+    "two_turn_litellm_smoke_passed": true
+  },
+  "agent_exit_status": "RepeatedFormatError",
+  "assistant_messages_with_tool_calls": 23,
+  "malformed_json_tool_calls": 8,
+  "malformed_pattern": "extra closing bracket after long apply_patch heredoc",
+  "submission_chars": 0,
+  "official_reward": 0.0,
+  "plumbing_success": false,
+  "calibration_outcome": false,
+  "job_dir": "results/harbor_jobs_host/gptoss-dev-protocol-recheck"
+}
