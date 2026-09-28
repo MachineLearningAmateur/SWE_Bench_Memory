@@ -16,7 +16,7 @@ claim of equivalence to either paper's agent or model.
 
 A task that reaches the step limit, emits malformed calls, or ends without
 an explicit mini-SWE-agent submission remains in the denominator and is
-scored unresolved (official reward 0). Record its exit status and failure
+scored unresolved. Record its exit status and failure
 category separately. Do not extend a live run, retry a model-behavior
 failure, infer submission from prose, or recover and submit an unsubmitted
 working-tree patch. A genuine infrastructure failure must be identified
@@ -26,6 +26,12 @@ No reminder or end-of-run prompt has been added. The official Harbor
 verifier remains the correctness source. The 12-task no-memory calibration
 still uses the handoff's 0–2 / 3–9 / 10–12 decision gate before any
 held-out three-arm pilot.
+
+During calibration, Harbor rewarded one unsubmitted working tree. Its raw
+official reward is preserved in the audit, but the task remains unresolved
+under the submit-required rule above. This clarifies the distinction between
+verifier correctness and protocol completion; it does not change the rule or
+agent behavior after seeing an outcome.
 
 Run the frozen no-memory calibration with:
 

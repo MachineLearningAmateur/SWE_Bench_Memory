@@ -85,9 +85,11 @@ def summarize_completed(task_id: str, task: dict, job_dir: Path) -> dict:
         raise ValueError(f"Unexpected verifier reward for {task_id}: {reward}")
     info = trajectory["info"]
     submission = info.get("submission") or ""
-    submitted = info["exit_status"] == "Submitted" and bool(submission)
-    if reward and not submitted:
-        raise ValueError(f"Verifier rewarded an unsubmitted task: {task_id}")
+    submit_command_issued = info["exit_status"] == "Submitted"
+    submitted = submit_command_issued and bool(submission)
+    # Harbor verifies the shared working tree even if mini-SWE-agent never
+    # submits. Keep the raw reward, but apply the predeclared completion rule.
+    rewarded_without_submission = bool(reward) and not submitted
     messages = trajectory["messages"]
     errors = [
         message for message in messages
@@ -105,8 +107,10 @@ def summarize_completed(task_id: str, task: dict, job_dir: Path) -> dict:
     finished = datetime.fromisoformat(result["finished_at"])
     return {
         "task_id": task_id, "repo": task["repo"], "language": task["language"],
-        "resolved": bool(reward), "official_reward": reward,
-        "exit_status": info["exit_status"], "submitted": submitted,
+        "resolved": bool(reward) and submitted, "official_reward": reward,
+        "rewarded_without_submission": rewarded_without_submission,
+        "exit_status": info["exit_status"], "submit_command_issued": submit_command_issued,
+        "submitted": submitted,
         "model_calls": info["model_stats"]["api_calls"],
         "valid_tool_calls": sum(m.get("role") == "assistant" for m in messages),
         "format_errors": len(errors), "repair_kinds": repairs,

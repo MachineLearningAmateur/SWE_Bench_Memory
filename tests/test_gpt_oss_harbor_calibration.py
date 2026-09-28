@@ -80,5 +80,68 @@ def test_limit_exit_is_unresolved_even_with_valid_actions(tmp_path, monkeypatch)
     )
     assert summary["resolved"] is False
     assert summary["submitted"] is False
+    assert summary["submit_command_issued"] is False
     assert summary["model_calls"] == 100
     assert summary["patch_sha256"] is None
+
+
+def test_verifier_can_reward_unsubmitted_worktree_without_protocol_success(tmp_path, monkeypatch):
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+    task_id = "example__task-2"
+    job_dir = tmp_path / "job"
+    trial_dir = job_dir / (task_id + "__trial")
+    _write_json(job_dir / "result.json", {
+        "n_total_trials": 1,
+        "stats": {"n_completed_trials": 1, "n_errored_trials": 0, "n_retries": 0},
+    })
+    _write_json(trial_dir / "result.json", {
+        "task_name": "ibragim-badertdinov/" + task_id,
+        "exception_info": None,
+        "verifier_result": {"rewards": {"reward": 1.0}},
+        "agent_result": {"n_input_tokens": 12, "n_output_tokens": 4},
+        "started_at": "2026-09-28T00:00:00",
+        "finished_at": "2026-09-28T00:00:10",
+    })
+    _write_json(trial_dir / "agent" / "mini-swe-agent.trajectory.json", {
+        "info": {"exit_status": "RepeatedFormatError", "submission": "",
+                 "model_stats": {"api_calls": 41}},
+        "messages": [{"role": "assistant", "extra": {"response": {}}}],
+    })
+    summary = module.summarize_completed(
+        task_id, {"repo": "example/task", "language": "typescript"}, job_dir
+    )
+    assert summary["official_reward"] == 1.0
+    assert summary["rewarded_without_submission"] is True
+    assert summary["resolved"] is False
+    assert summary["submitted"] is False
+    assert summary["submit_command_issued"] is False
+
+
+def test_submit_marker_with_empty_patch_is_distinguished(tmp_path, monkeypatch):
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+    task_id = "example__task-3"
+    job_dir = tmp_path / "job"
+    trial_dir = job_dir / (task_id + "__trial")
+    _write_json(job_dir / "result.json", {
+        "n_total_trials": 1,
+        "stats": {"n_completed_trials": 1, "n_errored_trials": 0, "n_retries": 0},
+    })
+    _write_json(trial_dir / "result.json", {
+        "task_name": "ibragim-badertdinov/" + task_id,
+        "exception_info": None,
+        "verifier_result": {"rewards": {"reward": 0.0}},
+        "agent_result": {"n_input_tokens": 12, "n_output_tokens": 4},
+        "started_at": "2026-09-28T00:00:00",
+        "finished_at": "2026-09-28T00:00:10",
+    })
+    _write_json(trial_dir / "agent" / "mini-swe-agent.trajectory.json", {
+        "info": {"exit_status": "Submitted", "submission": "",
+                 "model_stats": {"api_calls": 10}},
+        "messages": [],
+    })
+    summary = module.summarize_completed(
+        task_id, {"repo": "example/task", "language": "go"}, job_dir
+    )
+    assert summary["submit_command_issued"] is True
+    assert summary["submitted"] is False
+    assert summary["resolved"] is False
