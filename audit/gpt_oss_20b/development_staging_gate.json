@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-28",
+  "dataset": "ibragim-badertdinov/swe-rebench-07-2026@1",
+  "development_task_ids": [
+    "ludo-technologies__pyscn-548",
+    "vuejs__core-14877",
+    "gotd__td-1759"
+  ],
+  "conditions": ["no_memory", "flat_rag", "graph"],
+  "harbor_dry_runs": 9,
+  "harbor_dry_runs_passed": 9,
+  "model_backed_trials": 1,
+  "live_trial": {
+    "task_id": "ludo-technologies__pyscn-548",
+    "condition": "no_memory",
+    "job_name": "gptoss-dev-ludo-technologies__pyscn-548-no_memory",
+    "trial_id": "ludo-technologies__pyscn-548__a8wYNRr",
+    "instruction_sha256": "425f49018d88f2510775ee7bf606874e45118318bce7ae266a30d54b77785bbc",
+    "trajectory_sha256": "63bcc8fc00b491f162cf8835dff9569530144c630bb1d1ebdb6eb36c02fe83b9",
+    "agent_exit_status": "LimitsExceeded",
+    "agent_steps": 60,
+    "valid_tool_calls": 56,
+    "format_errors": {
+      "invalid_json_arguments": 2,
+      "unknown_tool_name": 2
+    },
+    "approved_repairs_applied": 0,
+    "submission": false,
+    "official_verifier_reward": 0.0
+  },
+  "gate_status": "failed",
+  "calibration_trials": 0,
+  "pilot_trials": 0,
+  "decision": "Stop model-backed runs; retain fail-closed behavior. No text-only submission fallback."
+}
