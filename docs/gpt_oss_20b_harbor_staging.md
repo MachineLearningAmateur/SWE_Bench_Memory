@@ -20,8 +20,8 @@ malformed call outside the narrowly approved repair remains a format failure.
 Do not reinterpret prose as a submission. Do not launch calibration or pilot
 trials until the handoff's plumbing and calibration gates pass.
 
-On 2026-09-28, three development tasks (one each in Python, TypeScript, and
-Go) were staged in all three arms, and all nine Harbor dry-runs passed. One
+On 2026-09-28, three development tasks (two Go, one TypeScript) were staged
+in all three arms, and all nine Harbor dry-runs passed. One
 model-backed no-memory development trial on `ludo-technologies__pyscn-548`
 then made 56 valid shell calls and four malformed calls (two invalid JSON
 argument strings and two unknown tool names), hit the 60-step limit, and
@@ -29,3 +29,11 @@ submitted no patch. The official verifier returned 0. This is a failed
 plumbing gate, not evidence that the no-memory condition cannot solve the
 task. The flat-RAG and graph arms remain unrun. See
 `audit/gpt_oss_20b/development_staging_gate.json` for the key-free record.
+
+Two more Python development tasks were staged, bringing the total to five
+tasks and 15 passing Harbor dry-runs. The no-memory trials on
+marimo-team__marimo-9766 and livekit__agents-5944 both hit the 60-step
+limit with no submission and official reward 0. The first had no remaining
+tool-format errors but repeated a test workaround; the second had three
+invalid-JSON argument errors. These are development diagnostics, not
+calibration outcomes. See audit/gpt_oss_20b/development_name_repair_recheck.json.

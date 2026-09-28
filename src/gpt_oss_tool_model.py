@@ -1,9 +1,9 @@
-"""Mini-SWE-agent's LiteLLM model with a strict, auditable bash-tool repair.
+"""Mini-SWE-agent's LiteLLM model with narrow, auditable bash-tool repairs.
 
 The stock model passes a non-strict schema and leaves tool choice on ``auto``.
 Mini-SWE-agent nevertheless requires a bash call on every response, including
 the final submit command. Keep its normal parser, history, and agent loop;
-repair only the exact extra-bracket typo observed on development trajectories.
+repair only exact typos observed on development trajectories.
 """
 
 from __future__ import annotations
@@ -83,8 +83,23 @@ def repair_observed_patch_arguments(arguments: str) -> str | None:
     return candidate
 
 
+def repair_observed_tool_name(name: str, arguments: str) -> str | None:
+    """Accept only the observed leaked channel suffix on a valid bash call."""
+    if name != "bash<|channel|>commentary" or not isinstance(arguments, str):
+        return None
+    try:
+        parsed = json.loads(arguments)
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(parsed, dict) or set(parsed) != {"command"}:
+        return None
+    if not isinstance(parsed["command"], str) or not parsed["command"].strip():
+        return None
+    return "bash"
+
+
 class RepairingToolLitellmModel(StrictToolLitellmModel):
-    """Repair the observed bash argument typo before mini's normal parser."""
+    """Repair one observed typo at a time before mini's normal parser."""
 
     def _query(self, messages: list[dict[str, Any]], **kwargs: Any):
         response = super()._query(messages, **kwargs)
@@ -93,10 +108,24 @@ class RepairingToolLitellmModel(StrictToolLitellmModel):
             return response
         calls = choices[0].message.tool_calls or []
         if (len(calls) != 1 or calls[0].type != "function" or
-                calls[0].function is None or calls[0].function.name != "bash"):
+                calls[0].function is None):
             return response
         tool_call = calls[0]
+        name = tool_call.function.name
         original = tool_call.function.arguments
+        repaired_name = repair_observed_tool_name(name, original)
+        if repaired_name is not None:
+            tool_call.function.name = repaired_name
+            response.agent_tool_repairs = [{
+                "kind": "channel_suffix_in_bash_name",
+                "tool_call_id": tool_call.id,
+                "original_name": name,
+                "repaired_name": repaired_name,
+                "original_arguments": original,
+            }]
+            return response
+        if name != "bash":
+            return response
         repaired = repair_observed_patch_arguments(original)
         if repaired is None:
             return response

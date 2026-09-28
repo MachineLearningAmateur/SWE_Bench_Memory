@@ -116,3 +116,71 @@ def test_unknown_tool_is_not_repaired():
         assert response.choices[0].message.tool_calls[0].function.arguments == original
         assert not response.model_dump().get("agent_tool_repairs")
     """)
+
+
+def test_observed_channel_suffix_is_repaired_and_logged():
+    run_with_agent_package("""
+        import json
+        from src import gpt_oss_tool_model as module
+
+        arguments = json.dumps({"command": "pwd"})
+        def fake_completion(**kwargs):
+            return module.litellm.ModelResponse(
+                model="openai/test-deployment",
+                choices=[{"index": 0, "finish_reason": "tool_calls", "message": {
+                    "role": "assistant", "content": None,
+                    "tool_calls": [{"id": "call_1", "type": "function", "function": {
+                        "name": "bash<|channel|>commentary", "arguments": arguments,
+                    }}],
+                }}],
+            )
+
+        module.litellm.completion = fake_completion
+        model = module.RepairingToolLitellmModel(model_name="openai/test-deployment")
+        response = model._query([{"role": "user", "content": "test"}])
+        call = response.choices[0].message.tool_calls[0]
+        assert call.function.name == "bash"
+        assert call.function.arguments == arguments
+        repair = response.model_dump()["agent_tool_repairs"][0]
+        assert repair["kind"] == "channel_suffix_in_bash_name"
+        assert repair["original_name"] == "bash<|channel|>commentary"
+        assert repair["repaired_name"] == "bash"
+        assert repair["original_arguments"] == arguments
+    """)
+
+
+def test_channel_suffix_repair_stays_fail_closed():
+    run_with_agent_package("""
+        import json
+        from src.gpt_oss_tool_model import repair_observed_tool_name
+
+        valid = json.dumps({"command": "pwd"})
+        assert repair_observed_tool_name("bash<|channel|>commentary", valid) == "bash"
+        assert repair_observed_tool_name("bash<|channel|>analysis", valid) is None
+        assert repair_observed_tool_name("bash", valid) is None
+        assert repair_observed_tool_name("bash<|channel|>commentary", '{"command":') is None
+        assert repair_observed_tool_name("bash<|channel|>commentary", json.dumps({"command": ""})) is None
+        assert repair_observed_tool_name("bash<|channel|>commentary", json.dumps({"command": "pwd", "other": 1})) is None
+        assert repair_observed_tool_name("bash<|channel|>commentary", json.dumps({"command": ["pwd"]})) is None
+    """)
+
+
+def test_text_only_response_is_never_turned_into_a_tool_call():
+    run_with_agent_package("""
+        from src import gpt_oss_tool_model as module
+
+        def fake_completion(**kwargs):
+            return module.litellm.ModelResponse(
+                model="openai/test-deployment",
+                choices=[{"index": 0, "finish_reason": "stop", "message": {
+                    "role": "assistant", "content": "I am done.", "tool_calls": None,
+                }}],
+            )
+
+        module.litellm.completion = fake_completion
+        model = module.RepairingToolLitellmModel(model_name="openai/test-deployment")
+        response = model._query([{"role": "user", "content": "test"}])
+        assert response.choices[0].message.content == "I am done."
+        assert not response.choices[0].message.tool_calls
+        assert not response.model_dump().get("agent_tool_repairs")
+    """)

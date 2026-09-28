@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-28",
+  "dataset": "ibragim-badertdinov/swe-rebench-07-2026@1",
+  "staged_development_tasks_total": 5,
+  "staged_conditions_per_task": 3,
+  "harbor_dry_runs_passed_total": 15,
+  "protocol": {
+    "tool_choice": "required",
+    "parallel_tool_calls": false,
+    "bash_schema_strict": true,
+    "approved_repairs": [
+      "extra_bracket_after_apply_patch",
+      "channel_suffix_in_bash_name"
+    ],
+    "text_only_submission_fallback": false,
+    "step_limit": 60
+  },
+  "new_live_development_trials": [
+    {
+      "task_id": "marimo-team__marimo-9766",
+      "condition": "no_memory",
+      "trial_id": "marimo-team__marimo-9766__oC4NXyD",
+      "trajectory_sha256": "e04c924503f83f9e4c654c730374ff9e69c66188160cdbd9157b683eb23083ff",
+      "exit_status": "LimitsExceeded",
+      "api_calls": 60,
+      "valid_tool_calls": 60,
+      "format_errors": 0,
+      "repair_kinds": [
+        "extra_bracket_after_apply_patch",
+        "channel_suffix_in_bash_name"
+      ],
+      "submitted": false,
+      "official_verifier_reward": 0.0
+    },
+    {
+      "task_id": "livekit__agents-5944",
+      "condition": "no_memory",
+      "trial_id": "livekit__agents-5944__8xuS5ci",
+      "trajectory_sha256": "431232091acced39193b6011b0f949027ce694c736aa010342e59a39e6b29d2c",
+      "exit_status": "LimitsExceeded",
+      "api_calls": 60,
+      "valid_tool_calls": 56,
+      "format_errors": 3,
+      "format_error_kind": "invalid_json_arguments",
+      "repair_kinds": [
+        "extra_bracket_after_apply_patch",
+        "extra_bracket_after_apply_patch"
+      ],
+      "submitted": false,
+      "official_verifier_reward": 0.0
+    }
+  ],
+  "gate_status": "failed",
+  "calibration_trials": 0,
+  "pilot_trials": 0,
+  "decision": "Stop model-backed runs pending a new protocol decision; keep malformed responses and text-only completion fail-closed."
+}
