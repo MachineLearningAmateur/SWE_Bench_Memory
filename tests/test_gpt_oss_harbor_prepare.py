@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
+import yaml
 
 from src.gpt_oss_harbor_prepare import (
     CONDITIONS,
@@ -16,6 +17,14 @@ from src.gpt_oss_harbor_prepare import (
     stage,
 )
 from src.memory_conditions import MemoryResult
+
+
+def test_frozen_harbor_run_policy_has_one_shared_bounded_agent():
+    config = yaml.safe_load(Path("config/harbor_gpt_oss.yaml").read_text(encoding="utf-8"))
+    assert config["agent"]["step_limit"] == 100
+    assert config["agent"]["cost_limit"] == 0
+    assert config["model"]["model_class"] == "gpt_oss_tool_model.RepairingToolLitellmModel"
+    assert config["model"]["model_kwargs"]["reasoning_effort"] == "medium"
 
 
 def test_only_frozen_development_tasks_are_loaded():

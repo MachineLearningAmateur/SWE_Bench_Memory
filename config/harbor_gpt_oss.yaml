@@ -1,9 +1,9 @@
 # Use with src.harbor_mini_agent:RepairingMiniSweAgent. Its pinned `mini`
-# scaffold is unchanged; the model class repairs only the recorded extra-]
-# bash JSON typo and logs the original arguments in the trajectory.
+# scaffold is unchanged; the model class applies only the two recorded,
+# narrowly validated tool-call repairs and logs originals in the trajectory.
 # Keep identical for no_memory, flat_rag, and graph trials.
 agent:
-  step_limit: 60
+  step_limit: 100
   cost_limit: 0
 model:
   model_class: gpt_oss_tool_model.RepairingToolLitellmModel
