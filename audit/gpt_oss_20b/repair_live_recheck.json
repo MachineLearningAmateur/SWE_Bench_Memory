@@ -1,0 +1,33 @@
+{
+  "started_at_utc": "2026-09-28T06:26:02.193779Z",
+  "finished_at_utc": "2026-09-28T06:27:48.767115Z",
+  "benchmark": "ibragim-badertdinov/swe-rebench-07-2026@1",
+  "task_name": "ibragim-badertdinov/Soju06__codex-lb-744",
+  "trial_name": "Soju06__codex-lb-744__tGNnCAJ",
+  "condition": "no_memory",
+  "deployment": "openai--gpt-oss-20b",
+  "agent_class": "src.harbor_mini_agent:RepairingMiniSweAgent",
+  "model_class_loaded": "gpt_oss_tool_model.RepairingToolLitellmModel",
+  "mini_swe_agent_version": "2.4.6",
+  "harbor_version": "0.23.0",
+  "endpoint_plain_chat_success": true,
+  "two_turn_native_tool_smoke_success": true,
+  "agent_exit_status": "RepeatedFormatError",
+  "assistant_messages_with_tool_calls": 29,
+  "tool_results": 29,
+  "repair_events": 1,
+  "repair_kind": "extra_bracket_after_apply_patch",
+  "final_consecutive_format_errors": 3,
+  "final_error_kind": "text_response_with_no_tool_call",
+  "submission_chars": 0,
+  "official_verifier_ran": true,
+  "official_reward": 0.0,
+  "plumbing_success": false,
+  "calibration_outcome": false,
+  "forced_bash_direct_check": {
+    "tool_choice": "forced bash function",
+    "tool_calls_returned": 0,
+    "finish_reason": "stop"
+  },
+  "job_dir": "results/harbor_jobs_host/gptoss-dev-repair-live-gate"
+}
