@@ -1,0 +1,30 @@
+{
+  "date_utc": "2026-09-28",
+  "benchmark": "ibragim-badertdinov/swe-rebench-07-2026@1",
+  "task_name": "ibragim-badertdinov/Soju06__codex-lb-744",
+  "trial_name": "Soju06__codex-lb-744__RKwr87J",
+  "condition": "no_memory",
+  "agent_class": "src.harbor_mini_agent:RepairingMiniSweAgent",
+  "model_class_loaded": "gpt_oss_tool_model.RepairingToolLitellmModel",
+  "mini_swe_agent_version": "2.4.6",
+  "harbor_version": "0.23.0",
+  "offline_replay": {
+    "development_trajectories": 2,
+    "malformed_calls": 16,
+    "narrowly_repairable_calls": 16
+  },
+  "live_recheck": {
+    "agent_exit_status": "BadRequestError",
+    "model_tool_calls": 0,
+    "repair_events": 0,
+    "submission_chars": 0,
+    "verifier_ran": false,
+    "plumbing_success": false
+  },
+  "direct_endpoint_checks": {
+    "strict_tool_request": "HTTP 400 BadRequestForDependentService",
+    "plain_chat_request": "HTTP 400 BadRequestForDependentService"
+  },
+  "calibration_outcome": false,
+  "job_dir": "results/harbor_jobs_host/gptoss-dev-repair-recheck"
+}

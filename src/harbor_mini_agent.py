@@ -3,13 +3,16 @@
 Harbor 0.23.0's installer assumes uv's tool bin directory is $HOME/.local/bin.
 Some July SWE-rebench images set XDG_DATA_HOME to /workspace/.local/share, so
 uv otherwise links the CLI under /workspace/.local/bin and setup exits 127.
-Only installation is customized; Harbor's normal agent run and verifier remain.
+The repairing subclass also supplies a narrow model adapter. Harbor's normal
+agent run and official verifier remain unchanged.
 """
 
 from __future__ import annotations
 
 import shlex
+import uuid
 from dataclasses import replace
+from pathlib import Path
 from typing import override
 
 from harbor.agents.installed.mini_swe_agent import MiniSweAgent
@@ -48,5 +51,33 @@ class PathSafeMiniSweAgent(MiniSweAgent):
                 f"uv tool install --python 3.12 {package} "
                 "--with litellm --with orjson --with fastapi; "
                 '"$UV_TOOL_BIN_DIR/mini-swe-agent" --help'
+            ),
+        )
+
+
+class RepairingMiniSweAgent(PathSafeMiniSweAgent):
+    """Use the predeclared native tool-call repair with Harbor's normal agent."""
+
+    _tool_model_dir = "/tmp/mswea-gpt-oss-model"
+
+    @property
+    @override
+    def model_connection(self) -> ResolvedModelConnection:
+        access = super().model_connection
+        return replace(access, env={**access.env, "PYTHONPATH": self._tool_model_dir})
+
+    @override
+    async def install(self, environment: BaseEnvironment) -> None:
+        await super().install(environment)
+        model_source = Path(__file__).with_name("gpt_oss_tool_model.py").read_text(
+            encoding="utf-8"
+        )
+        marker = f"MSWEA_TOOL_MODEL_EOF_{uuid.uuid4().hex}"
+        await self.exec_as_agent(
+            environment,
+            command=(
+                f"mkdir -p {shlex.quote(self._tool_model_dir)}\n"
+                f"cat > {shlex.quote(self._tool_model_dir + '/gpt_oss_tool_model.py')} "
+                f"<<'{marker}'\n{model_source}\n{marker}\n"
             ),
         )
