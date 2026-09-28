@@ -42,8 +42,8 @@ def _sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def load_development_tasks() -> dict[str, dict]:
-    """Fail closed if the source snapshot or frozen partition membership moves."""
+def load_source_tasks() -> dict[str, dict]:
+    """Fail closed if the source snapshot moves."""
     manifest = _read_json(FROZEN / "partition_manifest.json")
     if manifest["dataset"] != "ibragim-badertdinov/swe-rebench-07-2026":
         raise ValueError("Unexpected frozen dataset")
@@ -55,6 +55,12 @@ def load_development_tasks() -> dict[str, dict]:
     )}
     if len(tasks) != 111:
         raise ValueError("Expected 111 pinned July tasks")
+    return tasks
+
+
+def load_development_tasks() -> dict[str, dict]:
+    """Accept only the retrieval-development partition."""
+    tasks = load_source_tasks()
     dev_ids = set(_read_json(SOURCE / "dev_task_ids.json"))
     held_out = set(_read_json(FROZEN / "calibration_task_ids.json")) | set(
         _read_json(FROZEN / "pilot_task_ids.json")
@@ -62,6 +68,27 @@ def load_development_tasks() -> dict[str, dict]:
     if dev_ids & held_out or not dev_ids <= tasks.keys():
         raise ValueError("Development and frozen held-out tasks overlap or are missing")
     return {task_id: tasks[task_id] for task_id in sorted(dev_ids)}
+
+
+def load_calibration_tasks() -> dict[str, dict]:
+    """Preserve the frozen 12-task order and keep held-out groups disjoint."""
+    tasks = load_source_tasks()
+    task_ids = _read_json(FROZEN / "calibration_task_ids.json")
+    dev = set(_read_json(SOURCE / "dev_task_ids.json"))
+    pilot = set(_read_json(FROZEN / "pilot_task_ids.json"))
+    reserve = set(_read_json(FROZEN / "reserve_task_ids.json"))
+    if len(task_ids) != 12 or len(set(task_ids)) != 12:
+        raise ValueError("Expected 12 unique frozen calibration IDs")
+    if set(task_ids) & (dev | pilot | reserve) or not set(task_ids) <= tasks.keys():
+        raise ValueError("Calibration tasks overlap another partition or are missing")
+    if any(sum(tasks[task_id]["language"] == language for task_id in task_ids) != 4
+           for language in ("python", "typescript", "go")):
+        raise ValueError("Calibration language balance changed")
+    if {tasks[task_id]["repo"] for task_id in task_ids} & {
+        tasks[task_id]["repo"] for task_id in pilot
+    }:
+        raise ValueError("Calibration and pilot repositories overlap")
+    return {task_id: tasks[task_id] for task_id in task_ids}
 
 
 def memory_settings() -> dict:
@@ -130,7 +157,8 @@ def _write_frozen(path: Path, content: str) -> None:
 
 
 def stage(task: dict, condition: str, *, db: Path, db_sha256: str, settings: dict,
-          model_name: str, harbor_bin: Path, output_root: Path) -> dict:
+          model_name: str, harbor_bin: Path, output_root: Path,
+          phase: str = "dev") -> dict:
     task_id = task["instance_id"]
     memory = retrieve(task, condition, db, settings)
     if len(memory.context) > settings["character_budget"]:
@@ -150,10 +178,22 @@ def stage(task: dict, condition: str, *, db: Path, db_sha256: str, settings: dic
     retrieval_path = output / "retrieval.json"
     _write_frozen(instruction_path, instruction)
     _write_frozen(retrieval_path, json.dumps(retrieval, indent=2, ensure_ascii=False) + "\n")
-    job_name = f"gptoss-dev-{task_id}-{condition}"
+    if phase not in ("dev", "calibration"):
+        raise ValueError(f"Unknown staging phase: {phase}")
+    job_name = f"gptoss-{phase}-{task_id}-{condition}"
     command = harbor_command(task_id, condition, instruction_path, model_name=model_name,
                              job_name=job_name, harbor_bin=harbor_bin)
     _write_frozen(output / "harbor_command.json", json.dumps(command, indent=2) + "\n")
+    agent_config = ROOT / "config" / "harbor_gpt_oss.yaml"
+    run_policy = {
+        "phase": phase, "task_id": task_id, "condition": condition,
+        "agent_config_sha256": _sha256_file(agent_config),
+        "step_limit": yaml.safe_load(agent_config.read_text(encoding="utf-8"))["agent"]["step_limit"],
+        "one_attempt": True,
+        "unfinished_is_unresolved": True,
+        "text_only_submission_fallback": False,
+    }
+    _write_frozen(output / "run_policy.json", json.dumps(run_policy, indent=2) + "\n")
     return {
         "task_id": task_id, "condition": condition, "context_chars": len(memory.context),
         "selected_count": len(memory.selected), "retrieval_path": str(retrieval_path),
@@ -163,15 +203,27 @@ def stage(task: dict, condition: str, *, db: Path, db_sha256: str, settings: dic
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--task-id", action="append", required=True, help="Frozen development task ID; repeatable")
+    parser.add_argument("--split", choices=("development", "calibration"),
+                        default="development")
+    parser.add_argument("--task-id", action="append",
+                        help="Frozen task ID; repeatable. Default for calibration: all 12")
     parser.add_argument("--condition", action="append", choices=CONDITIONS, help="Default: all three")
     parser.add_argument("--dry-run", action="store_true", help="Also run Harbor's metadata-only validation")
     args = parser.parse_args()
     load_dotenv(ROOT / ".env")
-    tasks = load_development_tasks()
-    for task_id in args.task_id:
+    tasks = (load_development_tasks() if args.split == "development"
+             else load_calibration_tasks())
+    if args.split == "development" and not args.task_id:
+        raise SystemExit("Development staging requires --task-id")
+    task_ids = args.task_id or list(tasks)
+    conditions = tuple(args.condition or (
+        CONDITIONS if args.split == "development" else ("no_memory",)
+    ))
+    if args.split == "calibration" and conditions != ("no_memory",):
+        raise SystemExit("Calibration permits no_memory only")
+    for task_id in task_ids:
         if task_id not in tasks:
-            raise SystemExit(f"Task is not in the frozen development set: {task_id}")
+            raise SystemExit(f"Task is not in the frozen {args.split} set: {task_id}")
     settings = memory_settings()
     db = bootstrap_memory() / "data" / "flat_rag.sqlite"
     db_hash = _sha256_file(db)
@@ -181,13 +233,14 @@ def main() -> None:
     harbor_bin = ROOT / "results" / "harbor_host_env" / "Scripts" / "harbor.exe"
     if args.dry_run and not harbor_bin.exists():
         raise SystemExit("Install Harbor in the isolated host environment before --dry-run")
-    output_root = ROOT / "results" / "gpt_oss_staged" / "development"
+    output_root = ROOT / "results" / "gpt_oss_staged" / args.split
     summaries = []
-    for task_id in args.task_id:
-        for condition in args.condition or CONDITIONS:
+    for task_id in task_ids:
+        for condition in conditions:
             summary = stage(tasks[task_id], condition, db=db, db_sha256=db_hash,
                             settings=settings, model_name=profile["model_name"],
-                            harbor_bin=harbor_bin, output_root=output_root)
+                            harbor_bin=harbor_bin, output_root=output_root,
+                            phase="dev" if args.split == "development" else "calibration")
             if args.dry_run:
                 env = {**os.environ, "PYTHONPATH": str(ROOT)}
                 completed = subprocess.run(summary["command"] + ["--dry-run"],

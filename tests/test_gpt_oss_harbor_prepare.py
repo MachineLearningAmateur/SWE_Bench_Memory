@@ -11,6 +11,7 @@ from src.gpt_oss_harbor_prepare import (
     _write_frozen,
     harbor_command,
     instruction_addendum,
+    load_calibration_tasks,
     load_development_tasks,
     memory_settings,
     retrieve,
@@ -32,6 +33,16 @@ def test_only_frozen_development_tasks_are_loaded():
     assert len(tasks) == 30
     assert len({task["instance_id"] for task in tasks.values()}) == 30
     assert all(task["instance_id"] == task_id for task_id, task in tasks.items())
+
+
+def test_calibration_is_frozen_balanced_and_disjoint_from_development():
+    development = load_development_tasks()
+    calibration = load_calibration_tasks()
+    assert len(calibration) == 12
+    assert not set(calibration) & set(development)
+    assert [task["language"] for task in calibration.values()].count("python") == 4
+    assert [task["language"] for task in calibration.values()].count("typescript") == 4
+    assert [task["language"] for task in calibration.values()].count("go") == 4
 
 
 def test_frozen_graph_policy_and_no_memory_needs_no_database():
@@ -84,5 +95,8 @@ def test_stage_preserves_exact_retrieval_and_refuses_changes(tmp_path, monkeypat
     assert saved["selected"] == memory.selected
     assert saved["context_chars"] == len(memory.context)
     assert "GRAPH_RELATION example" in Path(first["instruction_path"]).read_text(encoding="utf-8")
+    policy = json.loads((tmp_path / "staged" / "Task__1" / "graph" / "run_policy.json").read_text(encoding="utf-8"))
+    assert policy["phase"] == "dev" and policy["step_limit"] == 100
+    assert policy["unfinished_is_unresolved"] is True
     with pytest.raises(ValueError, match="Refusing to overwrite"):
         _write_frozen(Path(first["instruction_path"]), "different")

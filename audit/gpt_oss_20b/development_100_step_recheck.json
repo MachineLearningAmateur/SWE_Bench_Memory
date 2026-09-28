@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-28",
+  "dataset": "ibragim-badertdinov/swe-rebench-07-2026@1",
+  "task_id": "marimo-team__marimo-9754",
+  "partition": "retrieval_development",
+  "condition": "no_memory",
+  "agent_config_commit": "acce9c0",
+  "step_limit": 100,
+  "first_launch": {
+    "status": "infrastructure_failure_before_trial",
+    "error": "Windows CP1252 UnicodeEncodeError in Harbor progress display",
+    "trial_created": false,
+    "model_calls": 0
+  },
+  "utf8_launch": {
+    "job_name": "gptoss-dev-marimo-team__marimo-9754-no_memory-utf8",
+    "trial_id": "marimo-team__marimo-9754__J4GX3CA",
+    "trajectory_sha256": "b8b1fd8a5ea3476a58090d77096c167fdf95371b083cb3234617c6c587e19614",
+    "started_at": "2026-09-28T09:15:18.093610Z",
+    "finished_at": "2026-09-28T09:23:46.232581Z",
+    "exit_status": "LimitsExceeded",
+    "model_calls": 100,
+    "valid_tool_calls": 97,
+    "format_errors": 3,
+    "approved_repair_events": 7,
+    "input_tokens": 3782166,
+    "output_tokens": 38742,
+    "submitted": false,
+    "official_verifier_reward": 0.0
+  },
+  "calibration_trials": 0,
+  "pilot_trials": 0,
+  "interpretation": "Count an unfinished trial as unresolved; do not retry or auto-submit an agent patch."
+}
