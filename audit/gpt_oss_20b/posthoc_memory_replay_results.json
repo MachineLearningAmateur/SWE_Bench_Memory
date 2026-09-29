@@ -1,0 +1,375 @@
+{
+  "label": "posthoc_exploratory_memory_replay",
+  "source_partition": "calibration",
+  "task_ids": [
+    "open-jarvis__OpenJarvis-465",
+    "tashfeenahmed__freellmapi-289",
+    "ludo-technologies__pyscn-500"
+  ],
+  "planned_new_trials": 6,
+  "completed_new_trials": 6,
+  "pending_pairs": [],
+  "arm_counts": {
+    "no_memory": {
+      "completed": 3,
+      "resolved": 0,
+      "raw_verifier_reward": 0.0,
+      "submit_command_issued": 2,
+      "nonempty_submissions": 0
+    },
+    "flat_rag": {
+      "completed": 3,
+      "resolved": 0,
+      "raw_verifier_reward": 0.0,
+      "submit_command_issued": 0,
+      "nonempty_submissions": 0
+    },
+    "graph": {
+      "completed": 3,
+      "resolved": 0,
+      "raw_verifier_reward": 0.0,
+      "submit_command_issued": 0,
+      "nonempty_submissions": 0
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "open-jarvis__OpenJarvis-465",
+      "language": "python",
+      "arms": {
+        "no_memory": {
+          "task_id": "open-jarvis__OpenJarvis-465",
+          "repo": "open-jarvis/OpenJarvis",
+          "language": "python",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "RepeatedFormatError",
+          "submit_command_issued": false,
+          "submitted": false,
+          "model_calls": 27,
+          "valid_tool_calls": 24,
+          "format_errors": 3,
+          "repair_kinds": [
+            "extra_bracket_after_apply_patch"
+          ],
+          "input_tokens": 266425,
+          "output_tokens": 3711,
+          "wall_seconds": 94.158,
+          "patch_sha256": null,
+          "trial_id": "open-jarvis__OpenJarvis-465__soxEZX3",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-calibration-open-jarvis__OpenJarvis-465-no_memory\\open-jarvis__OpenJarvis-465__soxEZX3\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "f14051bbf8c90e447f6d46edb7133684cf5a5c243500a73e3f826598866dae4a"
+        },
+        "flat_rag": {
+          "task_id": "open-jarvis__OpenJarvis-465",
+          "repo": "open-jarvis/OpenJarvis",
+          "language": "python",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "RepeatedFormatError",
+          "submit_command_issued": false,
+          "submitted": false,
+          "model_calls": 17,
+          "valid_tool_calls": 13,
+          "format_errors": 4,
+          "repair_kinds": [],
+          "input_tokens": 294301,
+          "output_tokens": 24727,
+          "wall_seconds": 284.142,
+          "patch_sha256": null,
+          "trial_id": "open-jarvis__OpenJarvis-465__worNiMK",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-replay-open-jarvis__OpenJarvis-465-flat_rag\\open-jarvis__OpenJarvis-465__worNiMK\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "fbfdef3a3d68899e07f1a0712a93e7f17b694cfabccafc92964c6811cac6dc4a"
+        },
+        "graph": {
+          "task_id": "open-jarvis__OpenJarvis-465",
+          "repo": "open-jarvis/OpenJarvis",
+          "language": "python",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "RepeatedFormatError",
+          "submit_command_issued": false,
+          "submitted": false,
+          "model_calls": 27,
+          "valid_tool_calls": 24,
+          "format_errors": 3,
+          "repair_kinds": [],
+          "input_tokens": 509063,
+          "output_tokens": 12262,
+          "wall_seconds": 163.791,
+          "patch_sha256": null,
+          "trial_id": "open-jarvis__OpenJarvis-465__Lr3Z65P",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-replay-open-jarvis__OpenJarvis-465-graph\\open-jarvis__OpenJarvis-465__Lr3Z65P\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "09568d3a791b0617ce2e64f75f2045e257d35096ffb0cdbd8fc00dfbb27fa207"
+        }
+      },
+      "retrieval_exposure": {
+        "flat_rag": {
+          "context_chars": 24000,
+          "context_sha256": "9c2f80e2aa265d8aacc5e5a3e6666bb23f1dd06cf5f79b6d4dd9c0344171d477",
+          "selected_count": 9,
+          "common_seed_chunk_ids": [
+            "base|node|C018:message:54#1",
+            "base|node|C008:message:70#1",
+            "base|node|C018:message:74#0",
+            "base|node|C018:message:60#0",
+            "base|node|C021:message:76#3"
+          ],
+          "graph_neighbors_added": 0,
+          "relations_followed": {}
+        },
+        "graph": {
+          "context_chars": 24000,
+          "context_sha256": "28c0e59ae4958013ded93c6e2d7a225b09395dba0096dbbb8dee603766c3c176",
+          "selected_count": 11,
+          "common_seed_chunk_ids": [
+            "base|node|C018:message:54#1",
+            "base|node|C008:message:70#1",
+            "base|node|C018:message:74#0",
+            "base|node|C018:message:60#0",
+            "base|node|C021:message:76#3"
+          ],
+          "graph_neighbors_added": 4,
+          "relations_followed": {
+            "CITES_SOURCE_MESSAGE": 4
+          }
+        }
+      }
+    },
+    {
+      "task_id": "tashfeenahmed__freellmapi-289",
+      "language": "typescript",
+      "arms": {
+        "no_memory": {
+          "task_id": "tashfeenahmed__freellmapi-289",
+          "repo": "tashfeenahmed/freellmapi",
+          "language": "typescript",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "Submitted",
+          "submit_command_issued": true,
+          "submitted": false,
+          "model_calls": 29,
+          "valid_tool_calls": 25,
+          "format_errors": 4,
+          "repair_kinds": [
+            "extra_bracket_after_apply_patch",
+            "extra_bracket_after_apply_patch",
+            "channel_suffix_in_bash_name"
+          ],
+          "input_tokens": 527618,
+          "output_tokens": 17093,
+          "wall_seconds": 210.332,
+          "patch_sha256": null,
+          "trial_id": "tashfeenahmed__freellmapi-289__96iQzkT",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-calibration-tashfeenahmed__freellmapi-289-no_memory\\tashfeenahmed__freellmapi-289__96iQzkT\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "6217da8d92ea7b6e4a68b7e0e05752013c1767943eb72aba8520be54502e1576"
+        },
+        "flat_rag": {
+          "task_id": "tashfeenahmed__freellmapi-289",
+          "repo": "tashfeenahmed/freellmapi",
+          "language": "typescript",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "RepeatedFormatError",
+          "submit_command_issued": false,
+          "submitted": false,
+          "model_calls": 31,
+          "valid_tool_calls": 26,
+          "format_errors": 5,
+          "repair_kinds": [
+            "extra_bracket_after_apply_patch",
+            "extra_bracket_after_apply_patch"
+          ],
+          "input_tokens": 678482,
+          "output_tokens": 12452,
+          "wall_seconds": 210.16,
+          "patch_sha256": null,
+          "trial_id": "tashfeenahmed__freellmapi-289__3jf54be",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-replay-tashfeenahmed__freellmapi-289-flat_rag\\tashfeenahmed__freellmapi-289__3jf54be\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "29697db281722fb118351503d2ce67c66e4042113275c198555afccc662a7caf"
+        },
+        "graph": {
+          "task_id": "tashfeenahmed__freellmapi-289",
+          "repo": "tashfeenahmed/freellmapi",
+          "language": "typescript",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "RepeatedFormatError",
+          "submit_command_issued": false,
+          "submitted": false,
+          "model_calls": 51,
+          "valid_tool_calls": 47,
+          "format_errors": 4,
+          "repair_kinds": [
+            "extra_bracket_after_apply_patch"
+          ],
+          "input_tokens": 1691779,
+          "output_tokens": 25814,
+          "wall_seconds": 258.747,
+          "patch_sha256": null,
+          "trial_id": "tashfeenahmed__freellmapi-289__kN8cGgn",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-replay-tashfeenahmed__freellmapi-289-graph\\tashfeenahmed__freellmapi-289__kN8cGgn\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "4f5782397e01f27ebe95f6a8df24fab425a0beb8d1e51150171e918e2c42a4ee"
+        }
+      },
+      "retrieval_exposure": {
+        "flat_rag": {
+          "context_chars": 24000,
+          "context_sha256": "a3c15f0b226fcebdba013ff632490b54b3ffdad8590f058a876f84a2d4226a9a",
+          "selected_count": 8,
+          "common_seed_chunk_ids": [
+            "base|node|C012:message:149#2",
+            "base|node|C012:message:66#4",
+            "base|node|C040:message:93#3",
+            "base|node|C012:message:66#3",
+            "base|node|C012:message:82:call:0#0"
+          ],
+          "graph_neighbors_added": 0,
+          "relations_followed": {}
+        },
+        "graph": {
+          "context_chars": 24000,
+          "context_sha256": "1dc627f35a34928660ccfc983562bdca828f12fb48c5feea17a27475d5b8295f",
+          "selected_count": 11,
+          "common_seed_chunk_ids": [
+            "base|node|C012:message:149#2",
+            "base|node|C012:message:66#4",
+            "base|node|C040:message:93#3",
+            "base|node|C012:message:66#3",
+            "base|node|C012:message:82:call:0#0"
+          ],
+          "graph_neighbors_added": 4,
+          "relations_followed": {
+            "CITES_SOURCE_MESSAGE": 4
+          }
+        }
+      }
+    },
+    {
+      "task_id": "ludo-technologies__pyscn-500",
+      "language": "go",
+      "arms": {
+        "no_memory": {
+          "task_id": "ludo-technologies__pyscn-500",
+          "repo": "ludo-technologies/pyscn",
+          "language": "go",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "Submitted",
+          "submit_command_issued": true,
+          "submitted": false,
+          "model_calls": 38,
+          "valid_tool_calls": 38,
+          "format_errors": 0,
+          "repair_kinds": [
+            "channel_suffix_in_bash_name",
+            "extra_bracket_after_apply_patch"
+          ],
+          "input_tokens": 556897,
+          "output_tokens": 4161,
+          "wall_seconds": 178.977,
+          "patch_sha256": null,
+          "trial_id": "ludo-technologies__pyscn-500__n4ejGof",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-calibration-ludo-technologies__pyscn-500-no_memory\\ludo-technologies__pyscn-500__n4ejGof\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "085bc92f45b8138bee47b245d9aadbba3deda8bb4dfe907aa78915ddce65e8dc"
+        },
+        "flat_rag": {
+          "task_id": "ludo-technologies__pyscn-500",
+          "repo": "ludo-technologies/pyscn",
+          "language": "go",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "LimitsExceeded",
+          "submit_command_issued": false,
+          "submitted": false,
+          "model_calls": 100,
+          "valid_tool_calls": 98,
+          "format_errors": 2,
+          "repair_kinds": [
+            "channel_suffix_in_bash_name",
+            "channel_suffix_in_bash_name",
+            "channel_suffix_in_bash_name",
+            "extra_bracket_after_apply_patch"
+          ],
+          "input_tokens": 3488475,
+          "output_tokens": 12274,
+          "wall_seconds": 465.341,
+          "patch_sha256": null,
+          "trial_id": "ludo-technologies__pyscn-500__Rv2NXRc",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-replay-ludo-technologies__pyscn-500-flat_rag\\ludo-technologies__pyscn-500__Rv2NXRc\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "58cbfbbf97ba3890a86c7b13a2dfacb232b8302d77a508691b770c23d4d47cc5"
+        },
+        "graph": {
+          "task_id": "ludo-technologies__pyscn-500",
+          "repo": "ludo-technologies/pyscn",
+          "language": "go",
+          "resolved": false,
+          "official_reward": 0.0,
+          "rewarded_without_submission": false,
+          "exit_status": "LimitsExceeded",
+          "submit_command_issued": false,
+          "submitted": false,
+          "model_calls": 100,
+          "valid_tool_calls": 95,
+          "format_errors": 5,
+          "repair_kinds": [
+            "channel_suffix_in_bash_name",
+            "extra_bracket_after_apply_patch"
+          ],
+          "input_tokens": 3034432,
+          "output_tokens": 13093,
+          "wall_seconds": 228.44,
+          "patch_sha256": null,
+          "trial_id": "ludo-technologies__pyscn-500__77Kxm49",
+          "trajectory_path": "results\\harbor_jobs_host\\gptoss-replay-ludo-technologies__pyscn-500-graph\\ludo-technologies__pyscn-500__77Kxm49\\agent\\mini-swe-agent.trajectory.json",
+          "trajectory_sha256": "a8d16d3c3bfec105afa0fd0ea20cd801dcb26d3903ef18bc3860ab860f97c486"
+        }
+      },
+      "retrieval_exposure": {
+        "flat_rag": {
+          "context_chars": 24000,
+          "context_sha256": "d9ee3065cd50892a6cd686a6e1f9689c68581954ba069d8e7b8ce11e837d623a",
+          "selected_count": 9,
+          "common_seed_chunk_ids": [
+            "base|node|C033:message:1#0",
+            "semantic|node|sem:C033:task#0",
+            "base|node|C033:task#0",
+            "base|node|C075:message:64#0",
+            "base|node|C075:task#0"
+          ],
+          "graph_neighbors_added": 0,
+          "relations_followed": {}
+        },
+        "graph": {
+          "context_chars": 24000,
+          "context_sha256": "8c77e81f4ab8fe5f6a21b9486c0392063f715dc0b7f498f04ccf735bcd73a835",
+          "selected_count": 13,
+          "common_seed_chunk_ids": [
+            "base|node|C033:message:1#0",
+            "semantic|node|sem:C033:task#0",
+            "base|node|C033:task#0",
+            "base|node|C075:message:64#0",
+            "base|node|C075:task#0"
+          ],
+          "graph_neighbors_added": 8,
+          "relations_followed": {
+            "CITES_SOURCE_MESSAGE": 5,
+            "HAS_END_STATE_ASSESSMENT": 1,
+            "PROPOSES_CANDIDATE_LESSON": 1,
+            "QUALIFIED_BY": 1
+          }
+        }
+      }
+    }
+  ],
+  "interpretation": "Paired descriptive check only; tasks selected after no-memory outcomes and original floor-stop, no significance or pilot claim"
+}
