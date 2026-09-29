@@ -178,7 +178,7 @@ def stage(task: dict, condition: str, *, db: Path, db_sha256: str, settings: dic
     retrieval_path = output / "retrieval.json"
     _write_frozen(instruction_path, instruction)
     _write_frozen(retrieval_path, json.dumps(retrieval, indent=2, ensure_ascii=False) + "\n")
-    if phase not in ("dev", "calibration"):
+    if phase not in ("dev", "calibration", "replay"):
         raise ValueError(f"Unknown staging phase: {phase}")
     job_name = f"gptoss-{phase}-{task_id}-{condition}"
     command = harbor_command(task_id, condition, instruction_path, model_name=model_name,

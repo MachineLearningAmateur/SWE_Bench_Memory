@@ -1,0 +1,32 @@
+{
+  "label": "posthoc_exploratory_memory_replay",
+  "declared_before_memory_arm_outcomes": "2026-09-28",
+  "source_partition": "calibration",
+  "selection_rule": "First frozen calibration task in each of Python, TypeScript, and Go order",
+  "task_ids": [
+    "open-jarvis__OpenJarvis-465",
+    "tashfeenahmed__freellmapi-289",
+    "ludo-technologies__pyscn-500"
+  ],
+  "new_arm_order": [
+    ["open-jarvis__OpenJarvis-465", "flat_rag"],
+    ["open-jarvis__OpenJarvis-465", "graph"],
+    ["tashfeenahmed__freellmapi-289", "graph"],
+    ["tashfeenahmed__freellmapi-289", "flat_rag"],
+    ["ludo-technologies__pyscn-500", "flat_rag"],
+    ["ludo-technologies__pyscn-500", "graph"]
+  ],
+  "baseline": "Existing one-attempt no_memory calibration on these same task IDs",
+  "agent_config": "config/harbor_gpt_oss.yaml",
+  "agent_config_sha256": "c6ad92eae357f2b1127d423b337c2daaa9292a2f25b57193d7d820cd61f91b2a",
+  "graph_policy": "config/graph_v2.yaml",
+  "graph_policy_sha256": "62f6412761a43a495d7453e9f65327aab3311ae78aafe5090aec227c4c1d9bad",
+  "memory_corpus_sha256": "3819f76349080c06ec0b09e246de40bbc1bf6efb19b875accf260f52f14a81c7",
+  "attempts_per_new_arm": 1,
+  "step_limit": 100,
+  "text_only_submission_fallback": false,
+  "primary_outcome": "Official verifier reward AND a nonempty explicit mini-SWE-agent submission",
+  "secondary_outcomes": ["raw_official_reward", "submit_command_issued", "exit_status", "format_errors", "model_calls", "retrieval_exposure"],
+  "interpretation": "Paired descriptive check only; tasks selected after no-memory outcomes and original floor-stop, no significance or pilot claim",
+  "no_tuning_during_replay": true
+}
