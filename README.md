@@ -38,6 +38,48 @@ The default GPT-5.1 model string is built as:
 
 The default model class is `litellm_response`, suitable for the existing GPT-5-family deployment. `MODEL_PROFILE=gpt_oss_20b` selects a separate Chat Completions profile without changing the GPT-5.1 settings. See [gpt-oss setup](docs/gpt_oss_20b_setup.md) for the Foundry endpoint smoke, frozen July-2026 partitions, and experiment gates.
 
+## GPT-OSS 20B / ten-task Verified batch
+
+`src.verified_batch` runs the existing seed-42 selection of ten SWE-bench
+Verified problems in `no_memory`, `flat_rag`, and `graph`, then grades all three
+prediction files with the official evaluator. It fixes the GPT-OSS repair
+adapter, 100-step/3600-second limits, and a common prompt wrapper across arms.
+The current selection includes the three earlier GPT-5.1 smoke problems.
+
+From the research container, use a **new** output directory:
+
+```bash
+python -m src.verified_batch --output results/NAME
+python -m src.verified_batch --output results/NAME --run
+```
+
+The first command freezes the task snapshot, configuration, memory hash,
+source hashes, and trial order without model calls. The second starts paid
+attempts and official grading. Cache task Docker images before starting;
+the agent's 120-second container-start timeout includes an uncached image pull.
+`status.json`, `batch.log`, and `records.json` track progress. `summary.json`
+is written only after grading completes without reported infrastructure errors.
+Reported zero model cost is not a billing estimate for this deployment.
+
+`--resume` accepts a stopped batch only and verifies the completed prefix
+against individual run records. It never retries completed model failures or
+overwrites an attempt directory. Inspect and preserve any interrupted attempt
+before resuming; an empty directory from a failed environment start can be
+archived after confirming that no model calls occurred. A documented orchestration
+migration can be recorded under `recovery/`; agent, model, and retrieval source
+hashes remain fixed.
+
+After completion, export the shareable numeric audit (no patches, prompts,
+credentials, or retrieved source text):
+
+```bash
+python -m src.verified_report --input results/NAME --output audit/NAME/results.json
+```
+
+The October comparison is recorded in
+[the ten-task results and analysis](docs/gpt_oss_20b_verified10_results.md),
+with its [numeric audit](audit/gpt_oss_20b/verified10_results.json).
+
 ## Important experimental rule
 
 Do **not** tune graph retrieval after looking at test-set outcomes without applying the same predeclared tuning procedure to the flat arm. Use development tasks for retrieval tuning, then freeze settings.

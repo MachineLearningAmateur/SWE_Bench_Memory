@@ -5,6 +5,7 @@ from __future__ import annotations
 import ast
 import json
 import sqlite3
+import subprocess
 import sys
 from pathlib import Path
 
@@ -188,9 +189,15 @@ def test_module_has_no_forbidden_imports():
 
 
 def test_importing_module_does_not_load_forbidden_modules():
-    for forbidden in audit.FORBIDDEN_MODULES:
-        assert forbidden not in sys.modules
-    assert audit.MODEL_CALLS_MADE == 0
+    # Check this import's effects, independent of other test modules importing
+    # the paid-run runner during collection in the parent pytest process.
+    result = subprocess.run(
+        [sys.executable, "-c", "import sys; from src import retrieval_exposure_audit as audit; "
+         "assert not set(audit.FORBIDDEN_MODULES).intersection(sys.modules); "
+         "assert audit.MODEL_CALLS_MADE == 0"],
+        cwd=MODULE_PATH.parents[1], capture_output=True, text=True, timeout=30,
+    )
+    assert result.returncode == 0, result.stderr
 
 
 # 4. same common seeds between flat and graph

@@ -1,0 +1,1735 @@
+{
+  "experiment": "verified10_gptoss_20261004_r1",
+  "dataset": "SWE-bench/SWE-bench_Verified",
+  "split": "test",
+  "created_utc": "2026-10-05T04:21:00.040752+00:00",
+  "model_name": "openai/openai--gpt-oss-20b",
+  "model_settings": {
+    "drop_params": true,
+    "temperature": 0,
+    "reasoning_effort": "medium"
+  },
+  "agent_overrides": {
+    "agent": {
+      "step_limit": 100,
+      "wall_time_limit_seconds": 3600,
+      "cost_limit": 0
+    },
+    "model": {
+      "model_class": "src.gpt_oss_tool_model.RepairingToolLitellmModel",
+      "cost_tracking": "ignore_errors"
+    }
+  },
+  "memory_settings": {
+    "character_budget": 24000,
+    "flat_top_k": 8,
+    "graph_seed_k": 8,
+    "graph_hops": 2,
+    "graph_max_neighbors": 8,
+    "allowed_relations": [
+      "STATED_DEPENDS_ON",
+      "REVIEWS",
+      "ASSESSES_AGAINST",
+      "COMPARES_WITH_PUBLISHED_LABEL",
+      "HAS_END_STATE_ASSESSMENT",
+      "QUALIFIED_BY",
+      "PROPOSES_CANDIDATE_LESSON",
+      "REQUIRES_VALIDATION",
+      "CITES_SOURCE_MESSAGE",
+      "STATED_MOTIVATES",
+      "FOLLOWED_BY_RELEVANT_TEST_PASS",
+      "ERROR_PRECEDES_REPAIR_ATTEMPT",
+      "FEEDBACK_INTERPRETED_IN",
+      "OBSERVED_EDIT_EFFECT",
+      "PERSISTS_IN",
+      "PERSISTS_IN_RECORDED_DIFF",
+      "FEEDBACK_PRECEDES_REPAIR",
+      "IMPLEMENTATION_CONFIRMED_BY",
+      "REPAIR_CONFIRMED_BY",
+      "LOCAL_FAILURE_REPORTED_AFTER",
+      "SUCCESS_CLAIM_EXCEEDS_EVIDENCE",
+      "PRECEDES_LOCAL_RECOVERY",
+      "STATED_JUSTIFIES_RETAINED_STATE",
+      "LOCAL_TEST_RECOVERY_AFTER_EDIT",
+      "SAME_UNVERIFIED_ASSUMPTION_IN_TEST",
+      "INCONSISTENT_PRESENCE_SEMANTICS",
+      "OBSERVED_POLICY_TEST_DISAGREEMENT",
+      "REPORTED_PROBE_RESULT",
+      "OBSERVED_SYNTAX_FAILURE",
+      "IMPLEMENTATION_YIELDS_OBSERVED_MISMATCH",
+      "CHECK_REPORTS_MISMATCH",
+      "CONTRADICTS_COMPLETION_CLAIM",
+      "EDIT_CONFIRMED_BY_READBACK",
+      "FOLLOWED_BY_ROLLBACK_ATTEMPT",
+      "FINAL_DIFF_LEAVES_IDENTIFIED_CONSUMER_UNCHANGED"
+    ],
+    "semantic_first": true
+  },
+  "versions": {
+    "mini-swe-agent": "2.4.6",
+    "swebench": "5.0.2",
+    "litellm": "1.102.1"
+  },
+  "selection": "Existing deterministic seed-42 sampler; includes prior GPT-5.1 smoke tasks.",
+  "scoring": "Official SWE-bench evaluation of explicitly submitted patches; unfinished attempts remain unresolved.",
+  "seed": 42,
+  "task_snapshot_sha256": "ca08534483501f5b6365e66de5e30a68da0f56f1f0c086e44dd26e331a860163",
+  "memory_sha256": "3819f76349080c06ec0b09e246de40bbc1bf6efb19b875accf260f52f14a81c7",
+  "manifest_sha256": "3a718b856764e94371ac727ecdd989c226937c1ea04f9c2c0f5974130118e434",
+  "source_sha256": {
+    "src/experiment.py": "7aa8fbf846ba70d07503c1efc330c7f4dae3adf0ff6c3b76accc7b70daa2cf3d",
+    "src/verified_batch.py": "70b86651dc35c6b25f06fb8479598aca3f5b06cd53883060947ef69c89e522d7",
+    "src/model_profiles.py": "62bd93ce99df59deae1ab98ccc8218f8c420beb365644003432dc35b5c132ab4",
+    "src/memory_conditions.py": "cf665b097d80c5123df2b4fc4910c971bf703121b590e0258027e04212f0c4a8",
+    "src/gpt_oss_tool_model.py": "a76be1abefa52a42764290c4b53b33ec7b95ceaa24c00c0a486f6591f597a6ec",
+    "config/models/gpt_oss_20b.yaml": "97edb854b5f081d49606d504c93b3c945ed482d11f47aaeaf01e101cb150c439"
+  },
+  "git_commit_at_freeze": "fda961df91eab5c4e144f665d9e1e73f399e2401",
+  "trial_order": [
+    {
+      "instance_id": "django__django-14672",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "django__django-14672",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "django__django-14672",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10449",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10449",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10449",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "django__django-11299",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "django__django-11299",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "django__django-11299",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "django__django-14493",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "django__django-14493",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "django__django-14493",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "django__django-11551",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "django__django-11551",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "django__django-11551",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "django__django-12143",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "django__django-12143",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "django__django-12143",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "django__django-15916",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "django__django-15916",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "django__django-15916",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "django__django-12193",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "django__django-12193",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "django__django-12193",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "condition": "flat_rag"
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "condition": "graph"
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "condition": "no_memory"
+    }
+  ],
+  "totals": {
+    "no_memory": {
+      "attempts": 10,
+      "resolved": 3,
+      "submitted_patches": 6,
+      "patch_apply_failures": 0,
+      "exits": {
+        "Submitted": 6,
+        "RepeatedFormatError": 3,
+        "LimitsExceeded": 1
+      },
+      "model_calls": 595,
+      "responses_with_usage": 595,
+      "input_tokens": 13508103,
+      "output_tokens": 196127,
+      "format_errors": 36,
+      "elapsed_seconds": 3296.169,
+      "cost_usd": null
+    },
+    "flat_rag": {
+      "attempts": 10,
+      "resolved": 1,
+      "submitted_patches": 6,
+      "patch_apply_failures": 3,
+      "exits": {
+        "Submitted": 6,
+        "LimitsExceeded": 1,
+        "RepeatedFormatError": 3
+      },
+      "model_calls": 586,
+      "responses_with_usage": 586,
+      "input_tokens": 16065964,
+      "output_tokens": 304671,
+      "format_errors": 41,
+      "elapsed_seconds": 5176.765,
+      "cost_usd": null
+    },
+    "graph": {
+      "attempts": 10,
+      "resolved": 1,
+      "submitted_patches": 3,
+      "patch_apply_failures": 0,
+      "exits": {
+        "RepeatedFormatError": 6,
+        "Submitted": 3,
+        "LimitsExceeded": 1
+      },
+      "model_calls": 547,
+      "responses_with_usage": 547,
+      "input_tokens": 13710862,
+      "output_tokens": 223630,
+      "format_errors": 67,
+      "elapsed_seconds": 4332.391,
+      "cost_usd": null
+    }
+  },
+  "paired_results": [
+    {
+      "instance_id": "django__django-14672",
+      "no_memory": true,
+      "flat_rag": false,
+      "graph": false
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10449",
+      "no_memory": false,
+      "graph": false,
+      "flat_rag": false
+    },
+    {
+      "instance_id": "django__django-11299",
+      "flat_rag": false,
+      "no_memory": false,
+      "graph": false
+    },
+    {
+      "instance_id": "django__django-14493",
+      "flat_rag": true,
+      "graph": false,
+      "no_memory": true
+    },
+    {
+      "instance_id": "django__django-11551",
+      "graph": false,
+      "no_memory": false,
+      "flat_rag": false
+    },
+    {
+      "instance_id": "django__django-12143",
+      "graph": true,
+      "flat_rag": false,
+      "no_memory": true
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "no_memory": false,
+      "flat_rag": false,
+      "graph": false
+    },
+    {
+      "instance_id": "django__django-15916",
+      "no_memory": false,
+      "graph": false,
+      "flat_rag": false
+    },
+    {
+      "instance_id": "django__django-12193",
+      "flat_rag": false,
+      "no_memory": false,
+      "graph": false
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "flat_rag": false,
+      "graph": false,
+      "no_memory": false
+    }
+  ],
+  "trials": [
+    {
+      "instance_id": "django__django-14672",
+      "repo": "django/django",
+      "condition": "no_memory",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": true,
+      "elapsed_seconds": 44.103,
+      "patch_chars": 1545,
+      "patch_sha256": "7a8d17522d6072c1f459b254e3ce25259fc49e8ea0745dce925b4042d7fb9c5d",
+      "trajectory_sha256": "5937d238cc3ab78337f457915f6e071c2391022bc624f43901a98efd989d0837",
+      "retrieval_sha256": "a34e4226beb518dbd98b01bfcb74678af87f53fe01c2d6cb3b1e19b19ae9cffe",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 29,
+      "responses_with_usage": 29,
+      "input_tokens": 306980,
+      "output_tokens": 5098,
+      "format_errors": 2,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 2,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-14672",
+      "repo": "django/django",
+      "condition": "flat_rag",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 207.818,
+      "patch_chars": 1237,
+      "patch_sha256": "89acc6f33620be1e8ba67e1ea96df0573413dc44587dcfa4a481b7525f8ff85e",
+      "trajectory_sha256": "80a23d20a3c6a416d3189830e7b4b6008c1324d308cb4528d38b62966d59d226",
+      "retrieval_sha256": "2e1db760d14ba56d2200a0106baf23584ae022876b59f9cae661bd0930e6f078",
+      "context_chars": 24000,
+      "context_sha256": "4acd2def223022c5cded3baefdbc556b791d152d48eda0e0c11cb0a11ce3c516",
+      "selected_count": 9,
+      "common_seed_chunk_ids": [
+        "base|node|C033:message:1#1",
+        "base|node|C034:message:1#0",
+        "base|node|C063:message:1#0",
+        "base|node|C074:message:1#0",
+        "base|node|C080:message:1#1"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 59,
+      "responses_with_usage": 59,
+      "input_tokens": 1227868,
+      "output_tokens": 19345,
+      "format_errors": 0,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 1,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-14672",
+      "repo": "django/django",
+      "condition": "graph",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 32.279,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "91c109d57c6b2f011f4ffe66befb69c66e406a2cd883a9220c73cec77f138bb2",
+      "retrieval_sha256": "e253ebb15e6c134dd877bb608686b9fb635b5b9cf784b97dc83f471ea73eeaf9",
+      "context_chars": 24000,
+      "context_sha256": "c44389cccbc7ac11a680d5fcd885abbc7feec56d1260e191ed0276e1d448581f",
+      "selected_count": 13,
+      "common_seed_chunk_ids": [
+        "base|node|C033:message:1#1",
+        "base|node|C034:message:1#0",
+        "base|node|C063:message:1#0",
+        "base|node|C074:message:1#0",
+        "base|node|C080:message:1#1"
+      ],
+      "graph_neighbors_added": 8,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 8
+      },
+      "model_calls": 21,
+      "responses_with_usage": 21,
+      "input_tokens": 251808,
+      "output_tokens": 4033,
+      "format_errors": 4,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 1,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10449",
+      "repo": "sphinx-doc/sphinx",
+      "condition": "no_memory",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 48.794,
+      "patch_chars": 957,
+      "patch_sha256": "6a7a7ff362e5eb183ffa8c4bd11214bda613448f6f1b77c6f2ab394d2565fb40",
+      "trajectory_sha256": "1b86e4471b31d5e8a06f1e74aaeb7fc6a3af51d227f287f53eeb8ed8d5f62a37",
+      "retrieval_sha256": "3a013885b2067753deabf14abf3ad8b90e42ab80bf2adc8388bcfc03fa9812c3",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 39,
+      "responses_with_usage": 39,
+      "input_tokens": 508725,
+      "output_tokens": 5395,
+      "format_errors": 4,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 2,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10449",
+      "repo": "sphinx-doc/sphinx",
+      "condition": "graph",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 1654.112,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "c66b1e37dbe9ab215e78efa3ed44534d124ecea2364cf1ec1337510758bcbe47",
+      "retrieval_sha256": "e2f5f9ed8ad56f34f2a210d9460a96ccca15d309ed251d319b2af9a03937fbc6",
+      "context_chars": 24000,
+      "context_sha256": "2de3dfcdf198d9d44a7fbcd6b4a46b9aab47656070ef2ce1ca0b3dec4790873d",
+      "selected_count": 9,
+      "common_seed_chunk_ids": [
+        "base|node|C012:message:86:call:0#0",
+        "base|node|C045:message:85#0",
+        "base|node|C069:message:39#0",
+        "base|node|C012:message:86#0",
+        "base|node|C045:message:84:call:0#0"
+      ],
+      "graph_neighbors_added": 2,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 2
+      },
+      "model_calls": 84,
+      "responses_with_usage": 84,
+      "input_tokens": 2738529,
+      "output_tokens": 39555,
+      "format_errors": 5,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1,
+        "channel_suffix_in_bash_name": 1
+      }
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10449",
+      "repo": "sphinx-doc/sphinx",
+      "condition": "flat_rag",
+      "exit_status": "LimitsExceeded",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 2131.67,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "eaaa8ad2cf4db5a24a79479b01a4e933a97dc698990c8bcd8d6c612bfd7ff5fc",
+      "retrieval_sha256": "c572271253ed3a6d9eaec7bb01d3de57320faf3b2c228ea317fd9c823a65f089",
+      "context_chars": 24000,
+      "context_sha256": "d507e2143778b0da18e8950866285b13cbfafa4d7076cdd68132de0a7cec0c5d",
+      "selected_count": 8,
+      "common_seed_chunk_ids": [
+        "base|node|C012:message:86:call:0#0",
+        "base|node|C045:message:85#0",
+        "base|node|C069:message:39#0",
+        "base|node|C012:message:86#0",
+        "base|node|C045:message:84:call:0#0"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 100,
+      "responses_with_usage": 100,
+      "input_tokens": 5295935,
+      "output_tokens": 159259,
+      "format_errors": 5,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 1,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-11299",
+      "repo": "django/django",
+      "condition": "flat_rag",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": true,
+      "resolved": false,
+      "elapsed_seconds": 260.832,
+      "patch_chars": 1309,
+      "patch_sha256": "27cce54143010087ac27fa449f7569300642c3a40e143456a4a7a4a5d4fcf2c3",
+      "trajectory_sha256": "3e1acdb52823a37387c326c8b3cfd4092ce61e51e3857b9d8097dc2f32b0fc08",
+      "retrieval_sha256": "9491257fd6fab9b2d4c284c6c3cd8b30455dec9432357313cb9a87d033f12fab",
+      "context_chars": 24000,
+      "context_sha256": "dbc5cf9f3eae8b54e85a141895b7a29a79042cb4a7f952b553a9006eaf1f5846",
+      "selected_count": 8,
+      "common_seed_chunk_ids": [
+        "base|node|C033:task#0",
+        "base|node|C033:message:1#0",
+        "semantic|node|sem:C033:task#0",
+        "base|node|C015:message:1#0",
+        "base|node|C039:message:1#0"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 82,
+      "responses_with_usage": 82,
+      "input_tokens": 2536358,
+      "output_tokens": 15019,
+      "format_errors": 3,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 10,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-11299",
+      "repo": "django/django",
+      "condition": "no_memory",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 922.476,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "f4c59d15b0f663b4f4e3ee486516691c7307c5e5003c5d5d867be5bd1888f25d",
+      "retrieval_sha256": "73ba97374d89750ac6fc4b377d05e975a6a3e37f92306d2015797ac931001f2d",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 93,
+      "responses_with_usage": 93,
+      "input_tokens": 4117510,
+      "output_tokens": 80718,
+      "format_errors": 5,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 5,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-11299",
+      "repo": "django/django",
+      "condition": "graph",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 597.569,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "805d38e08e02b65c440acc7975f9712a81c8653d4ce9113ff969d59b7cb1bcf3",
+      "retrieval_sha256": "de9d0c23549a97d1a659f7e0b953524bedd5921bee56bc40118ad62c8c14ca71",
+      "context_chars": 24000,
+      "context_sha256": "35adbb09556aa473e74225e1bbf9f7d8d4e2789b196b1acda0388349b17cb618",
+      "selected_count": 14,
+      "common_seed_chunk_ids": [
+        "base|node|C033:task#0",
+        "base|node|C033:message:1#0",
+        "semantic|node|sem:C033:task#0",
+        "base|node|C015:message:1#0",
+        "base|node|C039:message:1#0"
+      ],
+      "graph_neighbors_added": 8,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 5,
+        "HAS_END_STATE_ASSESSMENT": 1,
+        "PROPOSES_CANDIDATE_LESSON": 1,
+        "QUALIFIED_BY": 1
+      },
+      "model_calls": 75,
+      "responses_with_usage": 75,
+      "input_tokens": 1963597,
+      "output_tokens": 69592,
+      "format_errors": 16,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 4
+      }
+    },
+    {
+      "instance_id": "django__django-14493",
+      "repo": "django/django",
+      "condition": "flat_rag",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": true,
+      "elapsed_seconds": 116.557,
+      "patch_chars": 1112,
+      "patch_sha256": "08ee5e92cd782ef85e7db8392e907da3a0ac87a3a4427ce72ebd687aec82bf46",
+      "trajectory_sha256": "d2491163e940015d266744a6bd6c862abd906c7e4271a2d4c0175a8533361d15",
+      "retrieval_sha256": "f4f1328da74c4fc3544307dcc47cd1f55e914e911be012ac639599e0551beebb",
+      "context_chars": 24000,
+      "context_sha256": "c8e658505b6fd1c6e948b442371b36f9a91929b414dd7053d8acefcfa6cc8de0",
+      "selected_count": 8,
+      "common_seed_chunk_ids": [
+        "base|node|C078:message:67#0",
+        "base|node|C017:message:67#0",
+        "base|node|C067:message:139#0",
+        "base|node|C085:message:37#0",
+        "base|node|C085:message:41#0"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 50,
+      "responses_with_usage": 50,
+      "input_tokens": 1020581,
+      "output_tokens": 12368,
+      "format_errors": 5,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-14493",
+      "repo": "django/django",
+      "condition": "graph",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 48.15,
+      "patch_chars": 709,
+      "patch_sha256": "cb175d75f8593fa5d2b0ed0800a4d58819832d72bd893fea0de559ad0fde9abf",
+      "trajectory_sha256": "81eba1c02bcc2fb455f94b02d73c7b45c4dfbd3824df23adbeae5c6c11b18e22",
+      "retrieval_sha256": "43d97157d87dcb52e17a6211563b56832653b854eab6c66d7907e5fc4a19dff2",
+      "context_chars": 24000,
+      "context_sha256": "69b294c044ebf6f8e4b606ed16f5503f1ceb0a95594b2818f8e3b52313691ada",
+      "selected_count": 9,
+      "common_seed_chunk_ids": [
+        "base|node|C078:message:67#0",
+        "base|node|C017:message:67#0",
+        "base|node|C067:message:139#0",
+        "base|node|C085:message:37#0",
+        "base|node|C085:message:41#0"
+      ],
+      "graph_neighbors_added": 2,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 2
+      },
+      "model_calls": 26,
+      "responses_with_usage": 26,
+      "input_tokens": 382043,
+      "output_tokens": 4997,
+      "format_errors": 3,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-14493",
+      "repo": "django/django",
+      "condition": "no_memory",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": true,
+      "elapsed_seconds": 31.65,
+      "patch_chars": 1063,
+      "patch_sha256": "582900044ffccc792059ba6dc7309a092caeec00fc2fcddf63a7e4475dd7d9b5",
+      "trajectory_sha256": "0caaa491c0b93aac8ed957a7418fe584435c7eadf0b2d34630d15221dbd0b4d2",
+      "retrieval_sha256": "05fdcff90d046e567db311c5eea2f209a1212a9bdc17f51d248a630d31bbb774",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 23,
+      "responses_with_usage": 23,
+      "input_tokens": 204097,
+      "output_tokens": 3265,
+      "format_errors": 0,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-11551",
+      "repo": "django/django",
+      "condition": "graph",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 241.361,
+      "patch_chars": 2075,
+      "patch_sha256": "3402ea8d35230bcb7b46fa46aa9451d456a665086867ae7d9334d173e51e12ac",
+      "trajectory_sha256": "12b77281ac0b0228f77b097d988d3f9f9dc39bb1bcd4950d17087e710b6a5ff1",
+      "retrieval_sha256": "78bd2c1c9c8aa23eaeb4f30616131513b46a3d96dc6a5486fa8c28b6ee34023d",
+      "context_chars": 24000,
+      "context_sha256": "470a3557d2b25878db8b318939d8ccecee2b4dc4c1e4dad4dad3a884218978ee",
+      "selected_count": 12,
+      "common_seed_chunk_ids": [
+        "base|node|C014:message:1#0",
+        "base|node|C060:message:1#0",
+        "base|node|C076:message:1#0",
+        "base|node|C014:task#0",
+        "base|node|C060:task#0"
+      ],
+      "graph_neighbors_added": 6,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 6
+      },
+      "model_calls": 39,
+      "responses_with_usage": 39,
+      "input_tokens": 811285,
+      "output_tokens": 13827,
+      "format_errors": 4,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-11551",
+      "repo": "django/django",
+      "condition": "no_memory",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 121.284,
+      "patch_chars": 2230,
+      "patch_sha256": "b9fa666e7e0f338bc293f4cdf6587355889e93f2e7109932479774b49093adc9",
+      "trajectory_sha256": "e48a119364259b32e29dd7f257a6245a428eb921a88e39e7ee1bd329fd5df504",
+      "retrieval_sha256": "2004db2982cd9fa5500ad8e83c758db9c3e38b7dffc0b46b2975cad2bf3a7042",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 41,
+      "responses_with_usage": 41,
+      "input_tokens": 729755,
+      "output_tokens": 15139,
+      "format_errors": 3,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 2
+      }
+    },
+    {
+      "instance_id": "django__django-11551",
+      "repo": "django/django",
+      "condition": "flat_rag",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 205.057,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "bd3aec755cadd74117799fa081903a4a3a4570ef6cd3fafc2cbc280d3b8e8e94",
+      "retrieval_sha256": "e27eb331ee646d3f9d039328edddea47deb69f4ca4df80fa67e49d89f314813e",
+      "context_chars": 24000,
+      "context_sha256": "30a5d1ff1ece3731be49d9fcd8db2a12f428addd0a98079df692e76001bb1abf",
+      "selected_count": 8,
+      "common_seed_chunk_ids": [
+        "base|node|C014:message:1#0",
+        "base|node|C060:message:1#0",
+        "base|node|C076:message:1#0",
+        "base|node|C014:task#0",
+        "base|node|C060:task#0"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 56,
+      "responses_with_usage": 56,
+      "input_tokens": 1358317,
+      "output_tokens": 16520,
+      "format_errors": 5,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-12143",
+      "repo": "django/django",
+      "condition": "graph",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": true,
+      "elapsed_seconds": 49.747,
+      "patch_chars": 715,
+      "patch_sha256": "132af8d75e205ae5c96c051b2742ccff32effacca2144d04f1ada26456c162c1",
+      "trajectory_sha256": "1ea88df1edb747de56953e89826006c59cbc4c35eb592613303a9a165873256b",
+      "retrieval_sha256": "a97c821eb2d6ec258ae079c7a483ef5a668605254da8011e328e5e2d4fd2f7c0",
+      "context_chars": 24000,
+      "context_sha256": "5563b74252a8edd0b14c11aaee016d173c225e4f372168b84b6f54f948fe4885",
+      "selected_count": 13,
+      "common_seed_chunk_ids": [
+        "base|node|C052:message:147#0",
+        "base|node|C027:task#0",
+        "base|node|C027:message:1#0",
+        "base|node|C008:message:40#0",
+        "semantic|node|sem:C027:task#0"
+      ],
+      "graph_neighbors_added": 8,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 5,
+        "HAS_END_STATE_ASSESSMENT": 1,
+        "PROPOSES_CANDIDATE_LESSON": 1,
+        "QUALIFIED_BY": 1
+      },
+      "model_calls": 32,
+      "responses_with_usage": 32,
+      "input_tokens": 418892,
+      "output_tokens": 5188,
+      "format_errors": 1,
+      "tool_repairs": {}
+    },
+    {
+      "instance_id": "django__django-12143",
+      "repo": "django/django",
+      "condition": "flat_rag",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": true,
+      "resolved": false,
+      "elapsed_seconds": 183.629,
+      "patch_chars": 988,
+      "patch_sha256": "de4e6fd5dc42082f25759ca034fcc9e228448e77c94f5a40a6b6dd86d31cbbdc",
+      "trajectory_sha256": "8f10206172490e16a2212fedfdbda15683fe51149be8926011e17e7f95a9ae79",
+      "retrieval_sha256": "a820c1a97e4b3d11e8c14b83f0eb6188843a7923934590f31ed052540b243fcf",
+      "context_chars": 24000,
+      "context_sha256": "abdf5d2023a45a405df375d9f8e4597ece242000fd1a74c3339fe9d0e36784cc",
+      "selected_count": 8,
+      "common_seed_chunk_ids": [
+        "base|node|C052:message:147#0",
+        "base|node|C027:task#0",
+        "base|node|C027:message:1#0",
+        "base|node|C008:message:40#0",
+        "semantic|node|sem:C027:task#0"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 40,
+      "responses_with_usage": 40,
+      "input_tokens": 608514,
+      "output_tokens": 16646,
+      "format_errors": 3,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-12143",
+      "repo": "django/django",
+      "condition": "no_memory",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": true,
+      "elapsed_seconds": 47.494,
+      "patch_chars": 1142,
+      "patch_sha256": "c8c11c072da761cf6ee7e35a05cf697bfaa8cc8d0abd2a46b8b74f5a6f5918a2",
+      "trajectory_sha256": "9bdea1c9a41097ec7eeb0961ca6282eba00a0a3bd638d97712fe99d35f294d0a",
+      "retrieval_sha256": "9a88381d634f3598065f9d0ac646eb1eb0c2830f46fca8877f2c15b2705bd816",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 44,
+      "responses_with_usage": 44,
+      "input_tokens": 430653,
+      "output_tokens": 4905,
+      "format_errors": 3,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1,
+        "channel_suffix_in_bash_name": 3
+      }
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "repo": "pydata/xarray",
+      "condition": "no_memory",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 1470.869,
+      "patch_chars": 1915,
+      "patch_sha256": "5caf8267f311abbab1f5f00e0e4ede48813e5362dd8a9e41dfccf6623de624de",
+      "trajectory_sha256": "e310ae47ea9282a34708def7e2468863937059e1c6e104ea259c992fed3c3607",
+      "retrieval_sha256": "8113def86c4bcd1ea0ec85d641cccb0c8e7053f37e4c30f2322495ce4897ebfd",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 100,
+      "responses_with_usage": 100,
+      "input_tokens": 2213539,
+      "output_tokens": 27762,
+      "format_errors": 6,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 3,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "repo": "pydata/xarray",
+      "condition": "flat_rag",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 349.043,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "b05af70e85cef95d2e132f2d482800b0b27482614defb6c599746871a3fdd523",
+      "retrieval_sha256": "2d45725d5de745551b6d8da042077c06046e44079f3f86b58827ff911b7674f8",
+      "context_chars": 24000,
+      "context_sha256": "de46442b8f174298fe7fafd6a8d402ad5af59748dc38a060b0d5a5d168189ae5",
+      "selected_count": 9,
+      "common_seed_chunk_ids": [
+        "base|node|C014:message:32#0",
+        "base|node|C018:message:74#0",
+        "base|node|C071:message:70#1",
+        "base|node|C011:message:116#1",
+        "base|node|C014:message:38#0"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 44,
+      "responses_with_usage": 44,
+      "input_tokens": 945352,
+      "output_tokens": 28998,
+      "format_errors": 5,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 1
+      }
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "repo": "pydata/xarray",
+      "condition": "graph",
+      "exit_status": "LimitsExceeded",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 1156.644,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "79dcddee3df80d38cdc137d6e59621f2195e92e38ee216b072f29ff47a459796",
+      "retrieval_sha256": "998a33d2295aaa3a0a4afa6d9d1966bc4a0cc203037ac7525ce78f7c973c0c87",
+      "context_chars": 24000,
+      "context_sha256": "cfc49251eab117d7ebdbe19e89e69d3ade7a62d2da71df2edbc3652d8d4ae79d",
+      "selected_count": 11,
+      "common_seed_chunk_ids": [
+        "base|node|C014:message:32#0",
+        "base|node|C018:message:74#0",
+        "base|node|C071:message:70#1",
+        "base|node|C011:message:116#1",
+        "base|node|C014:message:38#0"
+      ],
+      "graph_neighbors_added": 5,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 4,
+        "STATED_MOTIVATES": 1
+      },
+      "model_calls": 100,
+      "responses_with_usage": 100,
+      "input_tokens": 3166382,
+      "output_tokens": 48873,
+      "format_errors": 8,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 5,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-15916",
+      "repo": "django/django",
+      "condition": "no_memory",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 144.187,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "50b136aff7e41a0d9af212d9afdc780f7c3d2db85433e716bbc57bfbe2b1ce6c",
+      "retrieval_sha256": "aa65d432153e4b89892fd256166a94047454e244e6b452b6c281ccc2dd11d623",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 67,
+      "responses_with_usage": 67,
+      "input_tokens": 1255915,
+      "output_tokens": 16973,
+      "format_errors": 6,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 3,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-15916",
+      "repo": "django/django",
+      "condition": "graph",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 117.517,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "38d547231c465e4cc9942a3f06b849d4a6ce0cf67d6700088fb3fbc30fa11227",
+      "retrieval_sha256": "9db93d6f267134bfecdea90d8589809f7f190f60fa05c54adb9b469c0ca4e5f8",
+      "context_chars": 24000,
+      "context_sha256": "a7afd5bcc3112feaeebe83ac96e598103e88e17f3bf1c3d15e12ee8c929a6e15",
+      "selected_count": 9,
+      "common_seed_chunk_ids": [
+        "base|node|C041:task#0",
+        "base|node|C079:task#0",
+        "base|node|C040:task#0",
+        "base|node|C040:message:1#0",
+        "base|node|C016:message:36#0"
+      ],
+      "graph_neighbors_added": 2,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 2
+      },
+      "model_calls": 58,
+      "responses_with_usage": 58,
+      "input_tokens": 1275440,
+      "output_tokens": 12768,
+      "format_errors": 5,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 1,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-15916",
+      "repo": "django/django",
+      "condition": "flat_rag",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 1353.738,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "cc65547fb09b954cd9eb8276f5bed3069c4ac4d2959f1cefce9eda87e95c6c1c",
+      "retrieval_sha256": "6ad26caf655fc6888ba9006e230b39a9a13320b201dda6ae6f10acd5364725c2",
+      "context_chars": 24000,
+      "context_sha256": "10567f465b0008245801b39758f01f0fc877e455f4bc528bbbd3f41720625267",
+      "selected_count": 8,
+      "common_seed_chunk_ids": [
+        "base|node|C041:task#0",
+        "base|node|C079:task#0",
+        "base|node|C040:task#0",
+        "base|node|C040:message:1#0",
+        "base|node|C016:message:36#0"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 68,
+      "responses_with_usage": 68,
+      "input_tokens": 1488677,
+      "output_tokens": 16317,
+      "format_errors": 8,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 1,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-12193",
+      "repo": "django/django",
+      "condition": "flat_rag",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": true,
+      "resolved": false,
+      "elapsed_seconds": 229.537,
+      "patch_chars": 1488,
+      "patch_sha256": "91de5a82e18e1e852d114e2395aceb518e8a75b98b23bcb723c085a6a38bc22c",
+      "trajectory_sha256": "aaf2b841e93a1ea7ae2c813bf049136dd920ed70e0db4408df4cadc14fae91e9",
+      "retrieval_sha256": "7f667e769bf03f25a6daa29201da43cbf519abca768ff692a7824998ecce8648",
+      "context_chars": 24000,
+      "context_sha256": "42e2ae5df9d726378682b57f5985b0ba1e70dde416f74784b817819831ee9ef5",
+      "selected_count": 9,
+      "common_seed_chunk_ids": [
+        "base|node|C068:message:130#0",
+        "base|node|C010:message:24#0",
+        "base|node|C069:task#0",
+        "base|node|C074:message:94#0",
+        "semantic|node|sem:C069:task#0"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 53,
+      "responses_with_usage": 53,
+      "input_tokens": 931970,
+      "output_tokens": 11085,
+      "format_errors": 2,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "django__django-12193",
+      "repo": "django/django",
+      "condition": "no_memory",
+      "exit_status": "LimitsExceeded",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 294.288,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "c948aa8e7053d9d1ed4196f43b828306ef50acdaa8c65b42ac08dde61a0bc55c",
+      "retrieval_sha256": "5899b9f86640d9a29212c6b125e99561ab9a73655445218b9903e887b61461ec",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 100,
+      "responses_with_usage": 100,
+      "input_tokens": 2633082,
+      "output_tokens": 24659,
+      "format_errors": 3,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1,
+        "channel_suffix_in_bash_name": 1
+      }
+    },
+    {
+      "instance_id": "django__django-12193",
+      "repo": "django/django",
+      "condition": "graph",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 81.751,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "27c96d8265d2c5cd22f6267c36fab974de6be01f1369780501b760802343250b",
+      "retrieval_sha256": "b6c34b112678d9179f55fdd12ab2acc2c365d1203115e45182cd5d298738edb9",
+      "context_chars": 24000,
+      "context_sha256": "520ac6a44a3938c2f3837514fda2955c42a4c8093501c939aeba96c24e16db28",
+      "selected_count": 11,
+      "common_seed_chunk_ids": [
+        "base|node|C068:message:130#0",
+        "base|node|C010:message:24#0",
+        "base|node|C069:task#0",
+        "base|node|C074:message:94#0",
+        "semantic|node|sem:C069:task#0"
+      ],
+      "graph_neighbors_added": 6,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 3,
+        "HAS_END_STATE_ASSESSMENT": 1,
+        "PROPOSES_CANDIDATE_LESSON": 1,
+        "QUALIFIED_BY": 1
+      },
+      "model_calls": 14,
+      "responses_with_usage": 14,
+      "input_tokens": 155923,
+      "output_tokens": 1602,
+      "format_errors": 7,
+      "tool_repairs": {}
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "repo": "pytest-dev/pytest",
+      "condition": "flat_rag",
+      "exit_status": "Submitted",
+      "submitted_patch": true,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 138.884,
+      "patch_chars": 1931,
+      "patch_sha256": "285db4d4464550153b20bccc51b08b3f78a02b4641e907966a5f04bb16ff62cf",
+      "trajectory_sha256": "fde908d1f84e02c7a01deb7e83bc92402460178f9fafc2ca99f56750821a81a1",
+      "retrieval_sha256": "b959145f540c7e3bb31456357d5864ae61fd6923928816949a15218e3632285b",
+      "context_chars": 24000,
+      "context_sha256": "ec78e7ec6269a12bee4cf8b7ae4668c558da50e536e5c69e71f73ab6b673a243",
+      "selected_count": 8,
+      "common_seed_chunk_ids": [
+        "base|node|C073:message:56#3",
+        "base|node|C073:message:56#4",
+        "base|node|C002:message:32#1",
+        "base|node|C011:message:120#0",
+        "base|node|C021:message:28#1"
+      ],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 34,
+      "responses_with_usage": 34,
+      "input_tokens": 652392,
+      "output_tokens": 9114,
+      "format_errors": 5,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 1,
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "repo": "pytest-dev/pytest",
+      "condition": "graph",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 353.261,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "478c7ebafcc95395bbafdc0e05f1bd358b08989a874ea197a14efd15bcb1839a",
+      "retrieval_sha256": "cd665eff0da1601f9e163a6393db9ad3d658f41ef72f2978759de8f32d73988e",
+      "context_chars": 24000,
+      "context_sha256": "24dbe06c8457427eda356b2b91cf187e84726a420dfe68f05c3db9d5094c159c",
+      "selected_count": 13,
+      "common_seed_chunk_ids": [
+        "base|node|C073:message:56#3",
+        "base|node|C073:message:56#4",
+        "base|node|C002:message:32#1",
+        "base|node|C011:message:120#0",
+        "base|node|C021:message:28#1"
+      ],
+      "graph_neighbors_added": 8,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 6,
+        "STATED_MOTIVATES": 2
+      },
+      "model_calls": 98,
+      "responses_with_usage": 98,
+      "input_tokens": 2546963,
+      "output_tokens": 23195,
+      "format_errors": 14,
+      "tool_repairs": {
+        "extra_bracket_after_apply_patch": 1
+      }
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "repo": "pytest-dev/pytest",
+      "condition": "no_memory",
+      "exit_status": "RepeatedFormatError",
+      "submitted_patch": false,
+      "patch_apply_failure": false,
+      "resolved": false,
+      "elapsed_seconds": 171.024,
+      "patch_chars": 0,
+      "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trajectory_sha256": "cf009d7b7dd7037735629894e0c87a5f9929dfe9c0c7654c23bd3e2cc5044c6a",
+      "retrieval_sha256": "242445cb3de63d107e567575bd95f63c2bac61c5c19ff90152e9b6ba1137ca2e",
+      "context_chars": 0,
+      "context_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selected_count": 0,
+      "common_seed_chunk_ids": [],
+      "graph_neighbors_added": 0,
+      "relations_followed": {},
+      "model_calls": 59,
+      "responses_with_usage": 59,
+      "input_tokens": 1107847,
+      "output_tokens": 12213,
+      "format_errors": 4,
+      "tool_repairs": {
+        "channel_suffix_in_bash_name": 2,
+        "extra_bracket_after_apply_patch": 1
+      }
+    }
+  ],
+  "official_reports": {
+    "no_memory": {
+      "total_instances": 10,
+      "submitted_instances": 10,
+      "completed_instances": 6,
+      "resolved_instances": 3,
+      "unresolved_instances": 3,
+      "infra_failure_instances": 0,
+      "ambiguous_failure_instances": 0,
+      "empty_patch_instances": 4,
+      "error_instances": 0,
+      "completed_ids": [
+        "django__django-11551",
+        "django__django-12143",
+        "django__django-14493",
+        "django__django-14672",
+        "pydata__xarray-6938",
+        "sphinx-doc__sphinx-10449"
+      ],
+      "incomplete_ids": [],
+      "empty_patch_ids": [
+        "django__django-11299",
+        "django__django-12193",
+        "django__django-15916",
+        "pytest-dev__pytest-5262"
+      ],
+      "submitted_ids": [
+        "django__django-11299",
+        "django__django-11551",
+        "django__django-12143",
+        "django__django-12193",
+        "django__django-14493",
+        "django__django-14672",
+        "django__django-15916",
+        "pydata__xarray-6938",
+        "pytest-dev__pytest-5262",
+        "sphinx-doc__sphinx-10449"
+      ],
+      "resolved_ids": [
+        "django__django-12143",
+        "django__django-14493",
+        "django__django-14672"
+      ],
+      "unresolved_ids": [
+        "django__django-11551",
+        "pydata__xarray-6938",
+        "sphinx-doc__sphinx-10449"
+      ],
+      "infra_failure_ids": [],
+      "ambiguous_failure_ids": [],
+      "failure_reasons": {},
+      "error_ids": [],
+      "schema_version": 2,
+      "unstopped_instances": 0,
+      "unstopped_containers": [],
+      "unremoved_images": [
+        "swebench/sweb.eval.x86_64.django_1776_django-11299:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-11551:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-12143:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-12193:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-14493:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-14672:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-15916:latest",
+        "swebench/sweb.eval.x86_64.pydata_1776_xarray-6938:latest",
+        "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5262:latest",
+        "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10449:latest"
+      ],
+      "report_sha256": "c700786bc9c9d240513d95a2523619444facb9fe3c3ae5bee5a41c54047ee11b",
+      "rejected_patches": {}
+    },
+    "flat_rag": {
+      "total_instances": 10,
+      "submitted_instances": 10,
+      "completed_instances": 3,
+      "resolved_instances": 1,
+      "unresolved_instances": 2,
+      "infra_failure_instances": 0,
+      "ambiguous_failure_instances": 1,
+      "empty_patch_instances": 4,
+      "error_instances": 3,
+      "completed_ids": [
+        "django__django-14493",
+        "django__django-14672",
+        "pytest-dev__pytest-5262"
+      ],
+      "incomplete_ids": [],
+      "empty_patch_ids": [
+        "django__django-11551",
+        "django__django-15916",
+        "pydata__xarray-6938",
+        "sphinx-doc__sphinx-10449"
+      ],
+      "submitted_ids": [
+        "django__django-11299",
+        "django__django-11551",
+        "django__django-12143",
+        "django__django-12193",
+        "django__django-14493",
+        "django__django-14672",
+        "django__django-15916",
+        "pydata__xarray-6938",
+        "pytest-dev__pytest-5262",
+        "sphinx-doc__sphinx-10449"
+      ],
+      "resolved_ids": [
+        "django__django-14493"
+      ],
+      "unresolved_ids": [
+        "django__django-14672",
+        "pytest-dev__pytest-5262"
+      ],
+      "infra_failure_ids": [],
+      "ambiguous_failure_ids": [
+        "pytest-dev__pytest-5262"
+      ],
+      "failure_reasons": {
+        "pytest-dev__pytest-5262": "missing_module"
+      },
+      "error_ids": [
+        "django__django-11299",
+        "django__django-12143",
+        "django__django-12193"
+      ],
+      "schema_version": 2,
+      "unstopped_instances": 0,
+      "unstopped_containers": [],
+      "unremoved_images": [
+        "swebench/sweb.eval.x86_64.django_1776_django-11299:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-11551:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-12143:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-12193:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-14493:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-14672:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-15916:latest",
+        "swebench/sweb.eval.x86_64.pydata_1776_xarray-6938:latest",
+        "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5262:latest",
+        "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10449:latest"
+      ],
+      "report_sha256": "af1069177656844b29a6856db4338e30d13b6dd086086255c79094c5e8d91251",
+      "rejected_patches": {
+        "django__django-11299": {
+          "classification": "patch_apply_failure",
+          "resolved": false,
+          "log_sha256": "8e43bbc88dc02bbc26ad8954ceeb62de15a2b0a013c9d9a4f21adc4fdc79336c"
+        },
+        "django__django-12143": {
+          "classification": "patch_apply_failure",
+          "resolved": false,
+          "log_sha256": "bceb1de608d9a97fdda6436dbce7844ab239ec307fb96d53f062d226ce7545c5"
+        },
+        "django__django-12193": {
+          "classification": "patch_apply_failure",
+          "resolved": false,
+          "log_sha256": "ba8b015686f44d598560b3fea06c64d67579442b0a2083d90b2ebb12e980927c"
+        }
+      }
+    },
+    "graph": {
+      "total_instances": 10,
+      "submitted_instances": 10,
+      "completed_instances": 3,
+      "resolved_instances": 1,
+      "unresolved_instances": 2,
+      "infra_failure_instances": 0,
+      "ambiguous_failure_instances": 0,
+      "empty_patch_instances": 7,
+      "error_instances": 0,
+      "completed_ids": [
+        "django__django-11551",
+        "django__django-12143",
+        "django__django-14493"
+      ],
+      "incomplete_ids": [],
+      "empty_patch_ids": [
+        "django__django-11299",
+        "django__django-12193",
+        "django__django-14672",
+        "django__django-15916",
+        "pydata__xarray-6938",
+        "pytest-dev__pytest-5262",
+        "sphinx-doc__sphinx-10449"
+      ],
+      "submitted_ids": [
+        "django__django-11299",
+        "django__django-11551",
+        "django__django-12143",
+        "django__django-12193",
+        "django__django-14493",
+        "django__django-14672",
+        "django__django-15916",
+        "pydata__xarray-6938",
+        "pytest-dev__pytest-5262",
+        "sphinx-doc__sphinx-10449"
+      ],
+      "resolved_ids": [
+        "django__django-12143"
+      ],
+      "unresolved_ids": [
+        "django__django-11551",
+        "django__django-14493"
+      ],
+      "infra_failure_ids": [],
+      "ambiguous_failure_ids": [],
+      "failure_reasons": {},
+      "error_ids": [],
+      "schema_version": 2,
+      "unstopped_instances": 0,
+      "unstopped_containers": [],
+      "unremoved_images": [
+        "swebench/sweb.eval.x86_64.django_1776_django-11299:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-11551:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-12143:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-12193:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-14493:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-14672:latest",
+        "swebench/sweb.eval.x86_64.django_1776_django-15916:latest",
+        "swebench/sweb.eval.x86_64.pydata_1776_xarray-6938:latest",
+        "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5262:latest",
+        "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10449:latest"
+      ],
+      "report_sha256": "70993e2bcb77cef34bdf991656d2e56f34a4bed4d9ae9d565e57eefad7534ee4",
+      "rejected_patches": {}
+    }
+  },
+  "retrieval_exposure": [
+    {
+      "instance_id": "django__django-14672",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 8,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 8
+      }
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10449",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 2,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 2
+      }
+    },
+    {
+      "instance_id": "django__django-11299",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 8,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 5,
+        "HAS_END_STATE_ASSESSMENT": 1,
+        "PROPOSES_CANDIDATE_LESSON": 1,
+        "QUALIFIED_BY": 1
+      }
+    },
+    {
+      "instance_id": "django__django-14493",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 2,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 2
+      }
+    },
+    {
+      "instance_id": "django__django-11551",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 6,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 6
+      }
+    },
+    {
+      "instance_id": "django__django-12143",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 8,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 5,
+        "HAS_END_STATE_ASSESSMENT": 1,
+        "PROPOSES_CANDIDATE_LESSON": 1,
+        "QUALIFIED_BY": 1
+      }
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 5,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 4,
+        "STATED_MOTIVATES": 1
+      }
+    },
+    {
+      "instance_id": "django__django-15916",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 2,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 2
+      }
+    },
+    {
+      "instance_id": "django__django-12193",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 6,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 3,
+        "HAS_END_STATE_ASSESSMENT": 1,
+        "PROPOSES_CANDIDATE_LESSON": 1,
+        "QUALIFIED_BY": 1
+      }
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "identical_common_seeds": true,
+      "different_memory_contexts": true,
+      "graph_neighbors_added": 8,
+      "relations_followed": {
+        "CITES_SOURCE_MESSAGE": 6,
+        "STATED_MOTIVATES": 2
+      }
+    }
+  ],
+  "infrastructure_incidents": [
+    {
+      "directory": "results/verified10_gptoss_20261004",
+      "trial": "django__django-14672/no_memory",
+      "model_requests": 1,
+      "task_commands_executed": 0,
+      "reason": "Unmapped deployment price caused the local cost calculator to raise before any action executed. Original artifacts retained.",
+      "fix": "cost_tracking=ignore_errors; no model, prompt, retrieval, or limit changes"
+    },
+    {
+      "task": "pydata__xarray-6938",
+      "condition": "no_memory",
+      "completed_attempts_preserved": 18,
+      "model_calls_in_failed_start": 0,
+      "failure": "Docker environment startup exceeded 120 seconds while image was not locally cached.",
+      "fix": "Pre-pull remaining images; resume untouched attempts only.",
+      "archived_empty_attempt_directory": "recovery/xarray_environment_timeout_empty_attempt"
+    },
+    {
+      "task": "pytest-dev__pytest-5262",
+      "condition": "graph",
+      "failure_type": "ServiceUnavailableError",
+      "reason": "Endpoint returned no healthy upstream after partial task execution. Inference health probe succeeded before retry decision.",
+      "model_patch_submitted": false,
+      "completed_attempts_preserved": 28,
+      "original_run_sha256": "9debd32f29ecb9f30e45d8ce1924c0a10c717380e060045f3553e78fb1cb3f9f",
+      "original_trajectory_sha256": "39ad62cd583489bca28340526bce57893b44fe130050effa8838bfa65f035867",
+      "archived_directory": "recovery/pytest_graph_service_unavailable",
+      "original_elapsed_seconds": 765.8920011520386,
+      "original_metrics": {
+        "model_calls": 45,
+        "responses_with_usage": 44,
+        "input_tokens": 762241,
+        "output_tokens": 4979,
+        "format_errors": 5,
+        "tool_repairs": {
+          "channel_suffix_in_bash_name": 3
+        }
+      },
+      "retry_policy": "One explicitly recorded infrastructure retry; no completed model-behavior failures retried."
+    },
+    {
+      "reason": "Original grader guard misclassified three patch-application errors as infrastructure failures. Resumed grading with identical predictions; all thirty agent records retained.",
+      "patch_failure_ids": [
+        "django__django-11299",
+        "django__django-12143",
+        "django__django-12193"
+      ],
+      "archived_reports_sha256": {
+        "openai__openai--gpt-oss-20b.verified10_gptoss_20261004_r1_flat_rag.json": "af1069177656844b29a6856db4338e30d13b6dd086086255c79094c5e8d91251",
+        "openai__openai--gpt-oss-20b.verified10_gptoss_20261004_r1_no_memory.json": "c700786bc9c9d240513d95a2523619444facb9fe3c3ae5bee5a41c54047ee11b"
+      }
+    }
+  ],
+  "recovery_inference_probe": {
+    "inference_probe_http": 200,
+    "has_choices": true,
+    "usage": {
+      "prompt_tokens": 70,
+      "total_tokens": 94,
+      "completion_tokens": 24,
+      "prompt_tokens_details": null
+    },
+    "seconds": 2.35
+  },
+  "runner_migration": {
+    "before_sha256": "70b86651dc35c6b25f06fb8479598aca3f5b06cd53883060947ef69c89e522d7",
+    "after_sha256": "a4b6e02ca0708fa7a6c37a5efacd9c51fbfa276ed3730804d8a2084014e73399",
+    "reason": "Validated resume plus a grading fix: evidence-backed Patch Apply Failed errors remain unresolved model outputs, not infrastructure failures. No agent or retrieval settings changed.",
+    "evaluation_before_sha256": "c93fb54edd5c562fa1f50a4634aeb3b69a12c53b5bd4478365dfdbc56960ffe1",
+    "evaluation_after_sha256": "a58b758673068fbc9f40120271e8936682930cb703a9461531de538fcc09ebee"
+  },
+  "evaluation_source_sha256": "a58b758673068fbc9f40120271e8936682930cb703a9461531de538fcc09ebee",
+  "cost_note": "Unknown: zero cost in model statistics is not evidence of zero billing."
+}

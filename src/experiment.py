@@ -127,10 +127,11 @@ def _agent_config(cfg: dict, output_path: Path) -> dict:
     return recursive_merge(base, override)
 
 
-def run_one(instance: dict, condition: str, cfg: dict, *, root: Path = ROOT / "results") -> dict:
+def run_one(instance: dict, condition: str, cfg: dict, *, root: Path = ROOT / "results",
+            agent_overrides: dict | None = None, uniform_wrapper: bool = False) -> dict:
     root.mkdir(parents=True, exist_ok=True)
     run_dir = root / condition / instance["instance_id"]
-    run_dir.mkdir(parents=True, exist_ok=True)
+    run_dir.mkdir(parents=True, exist_ok=False)
     traj_path = run_dir / "trajectory.json"
 
     # Exclude the held-out repository from memory retrieval even when it appears in the historical corpus.
@@ -144,7 +145,11 @@ def run_one(instance: dict, condition: str, cfg: dict, *, root: Path = ROOT / "r
             mem = _memory_for(condition, instance["problem_statement"], cfg, memory)
 
     task = augment_problem(instance["problem_statement"], mem.context)
+    if uniform_wrapper and not mem.context:
+        task = augment_problem(instance["problem_statement"], "[none]")
     agent_cfg = _agent_config(cfg, traj_path)
+    if agent_overrides:
+        agent_cfg = recursive_merge(agent_cfg, agent_overrides)
     model = get_model(config=agent_cfg.get("model", {}))
     env = get_sb_environment(agent_cfg, instance)
     agent = get_agent(model, env, agent_cfg.get("agent", {}), default_type="interactive")
@@ -155,6 +160,9 @@ def run_one(instance: dict, condition: str, cfg: dict, *, root: Path = ROOT / "r
         info = agent.run(task) or {}
     except Exception as exc:
         error = {"type": type(exc).__name__, "message": str(exc)}
+    finally:
+        if hasattr(env, "cleanup"):
+            env.cleanup()
     elapsed = time.time() - started
     submission = info.get("submission", "") if isinstance(info, dict) else ""
     exit_status = info.get("exit_status") if isinstance(info, dict) else None

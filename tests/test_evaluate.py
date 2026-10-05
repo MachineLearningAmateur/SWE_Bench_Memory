@@ -3,9 +3,29 @@
 from pathlib import Path
 
 import yaml
+import pytest
 
 from src import evaluate
 from src.evaluate import swebench_eval_command
+from src.evaluate import validate_grading_report
+
+
+def test_patch_rejection_is_unresolved_not_infrastructure(tmp_path):
+    task = tmp_path / "task-1"
+    task.mkdir()
+    (task / "run_instance.log").write_text("2026-10-05 - INFO - >>>>> Patch Apply Failed:\nOnly garbage was found in the patch input.")
+    report = {"error_instances": 1, "error_ids": ["task-1"], "resolved_ids": []}
+    result = validate_grading_report(report, tmp_path)
+    assert result["task-1"]["classification"] == "patch_apply_failure"
+    assert not result["task-1"]["resolved"]
+    (task / "run_instance.log").write_text("Docker unavailable")
+    with pytest.raises(ValueError, match="Unexplained"):
+        validate_grading_report(report, tmp_path)
+
+
+def test_real_grading_infrastructure_failures_still_block(tmp_path):
+    with pytest.raises(ValueError, match="infrastructure"):
+        validate_grading_report({"infra_failure_instances": 1}, tmp_path)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -90,4 +110,3 @@ def test_run_eval_builds_command_and_calls_subprocess(monkeypatch):
     assert captured["run_cmd"] == captured["command"]
     assert captured["run_kwargs"].get("text") is True
     assert captured["run_kwargs"].get("check") is False
-
