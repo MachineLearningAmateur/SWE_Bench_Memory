@@ -6,4 +6,7 @@ results/*
 __pycache__/
 .pytest_cache/
 memory_packages/*.zip
+!memory_packages/failure50_transfer.zip
+!memory_packages/historical_experiments.zip
 logs/
+.venv-retrieval/

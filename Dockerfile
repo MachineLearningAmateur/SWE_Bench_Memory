@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /workspace
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+COPY requirements-solver-lock.txt /tmp/requirements-solver-lock.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt -c /tmp/requirements-solver-lock.txt
 
 CMD ["sleep", "infinity"]

@@ -1,5 +1,19 @@
 # SWE Memory Experiment — Docker + VS Code + Jupyter
 
+## Current study: Failure50 with local hybrid RAG
+
+The new study uses only the 50 traces in the sibling `slm-failure-memory-pilot`
+repository, with 48 existing annotations. It adds local embeddings and reranking,
+compares five conditions on ten fresh Verified problems, and preserves the prior
+corpus and experiments as historical artifacts. See
+[the implementation and run protocol](docs/failure_memory_v1.md).
+
+For another machine, follow [the prepared-experiment handoff](docs/machine_handoff.md).
+It restores the frozen inputs and starts at zero attempts without rebuilding retrieval.
+
+Use `config/failure_memory.yaml` and `src.failure_pilot` for new runs. The legacy
+notebook and three-condition instructions below reproduce the earlier study.
+
 This is a starter for the controlled pilot:
 
 1. **No memory**

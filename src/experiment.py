@@ -128,14 +128,19 @@ def _agent_config(cfg: dict, output_path: Path) -> dict:
 
 
 def run_one(instance: dict, condition: str, cfg: dict, *, root: Path = ROOT / "results",
-            agent_overrides: dict | None = None, uniform_wrapper: bool = False) -> dict:
+            agent_overrides: dict | None = None, uniform_wrapper: bool = False,
+            prepared_memory: MemoryResult | None = None) -> dict:
     root.mkdir(parents=True, exist_ok=True)
     run_dir = root / condition / instance["instance_id"]
     run_dir.mkdir(parents=True, exist_ok=False)
     traj_path = run_dir / "trajectory.json"
 
     # Exclude the held-out repository from memory retrieval even when it appears in the historical corpus.
-    if condition == "no_memory":
+    if prepared_memory is not None:
+        if prepared_memory.condition != condition or prepared_memory.query != instance["problem_statement"]:
+            raise ValueError("Prepared memory does not match this trial")
+        mem = prepared_memory
+    elif condition == "no_memory":
         mem = MemoryResult("no_memory", instance["problem_statement"], "", [], {"retrieval": "none"})
     else:
         package = bootstrap_memory()

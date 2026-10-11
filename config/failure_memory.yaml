@@ -1,0 +1,34 @@
+source:
+  path: ../slm-failure-memory-pilot
+  commit: 267e00c456f273efb2b41f6d0717be1c74c4f941
+  report: reports/frontier_expansion_v1/result.json
+corpus: memory/failure50_v1
+models:
+  embedding:
+    name: Qwen/Qwen3-Embedding-0.6B
+    revision: 97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3
+  reranker:
+    name: Qwen/Qwen3-Reranker-0.6B
+    revision: e61197ed45024b0ed8a2d74b80b4d909f1255473
+  tokenizer:
+    name: openai/gpt-oss-20b
+    revision: 6cee5e81ee83917806bbde320786a8fb61efebee
+retrieval:
+  chunk_tokens: 768
+  overlap_tokens: 96
+  candidate_limit: 100
+  rrf_constant: 60
+  graph_seeds: 8
+  graph_base_candidates: 50
+  graph_hops: 2
+  memory_tokens: 4000
+  model_input_tokens: 8192
+  batch_size: 4
+  instruction: Retrieve historical software debugging evidence relevant to investigating and repairing the current issue.
+pilot:
+  dataset: SWE-bench/SWE-bench_Verified
+  revision: 78f471bf655a3137b2e8a75af1501690ec009ec3
+  seed: 42
+  development_tasks: 20
+  evaluation_tasks: 10
+  conditions: [no_memory, checklist, bm25, hybrid_rag, graph_rag]

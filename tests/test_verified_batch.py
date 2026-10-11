@@ -52,3 +52,31 @@ def test_resume_rejects_nonprefix_records(tmp_path):
     write_json(tmp_path / "records.json", [{"instance_id": "task-2", "condition": "graph"}])
     with pytest.raises(ValueError, match="prefix"):
         completed_records(tmp_path, {"trial_order": [{"instance_id": "task-1", "condition": "graph"}]})
+
+
+def test_prepared_memory_bypasses_old_corpus_and_reaches_solver(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    from src import experiment
+    from src.memory_conditions import MemoryResult
+
+    captured = {}
+
+    class Agent:
+        def run(self, task):
+            captured["task"] = task
+            return {"exit_status": "Submitted", "submission": "patch"}
+
+        def save(self, path, extra):
+            path.write_text("{}")
+
+    monkeypatch.setattr(experiment, "bootstrap_memory", lambda: pytest.fail("Legacy corpus was accessed"))
+    monkeypatch.setattr(experiment, "_agent_config", lambda *args: {})
+    monkeypatch.setattr(experiment, "get_model", lambda **kwargs: SimpleNamespace(config=SimpleNamespace(model_name="fixture")))
+    monkeypatch.setattr(experiment, "get_sb_environment", lambda *args: SimpleNamespace(cleanup=lambda: None))
+    monkeypatch.setattr(experiment, "get_agent", lambda *args, **kwargs: Agent())
+    memory = MemoryResult("hybrid_rag", "new problem", "new evidence", [], {"memory_tokens": 2})
+    record = experiment.run_one({"instance_id": "new-task", "problem_statement": "new problem"}, "hybrid_rag", {},
+                                root=tmp_path, prepared_memory=memory, uniform_wrapper=True)
+    assert "new evidence" in captured["task"]
+    assert record["exit_status"] == "Submitted"
+    assert record["model_patch"] == "patch"

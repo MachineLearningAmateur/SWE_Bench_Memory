@@ -1,0 +1,120 @@
+{
+  "verified_utc": "2026-10-11T12:20:18.374169+00:00",
+  "state": "local_preparation_complete_waiting_for_user_endpoint",
+  "source_commit": "267e00c456f273efb2b41f6d0717be1c74c4f941",
+  "source_artifacts_verified": 1475,
+  "corpus": {
+    "cases": 50,
+    "documents": 1546,
+    "chunks": 1622,
+    "edges": 681
+  },
+  "corpus_sha256": "76181f7bd396843059771f09a7c0ea49efb5d714bf257511c7ca642cd0b11db9",
+  "experiment_manifest_sha256": "976a80d80534c9f105499c676c985d3d1cbd97e9f141d1dd72c151ae8943959e",
+  "contexts_manifest_sha256": "4d4c634fcdb77feb09dbcd04cecf06be7aad87315396ecf2b84c3610ecf30c44",
+  "models": {
+    "embedding": {
+      "name": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+    },
+    "reranker": {
+      "name": "Qwen/Qwen3-Reranker-0.6B",
+      "revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473"
+    },
+    "tokenizer": {
+      "name": "openai/gpt-oss-20b",
+      "revision": "6cee5e81ee83917806bbde320786a8fb61efebee"
+    }
+  },
+  "dataset": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "seed": 42,
+    "development_tasks": 20,
+    "evaluation_tasks": 10,
+    "conditions": [
+      "no_memory",
+      "checklist",
+      "bm25",
+      "hybrid_rag",
+      "graph_rag"
+    ]
+  },
+  "context_bundles": 150,
+  "token_counts": {
+    "no_memory": {
+      "min": 0,
+      "max": 0,
+      "mean": 0.0
+    },
+    "checklist": {
+      "min": 45,
+      "max": 45,
+      "mean": 45.0
+    },
+    "bm25": {
+      "min": 3989,
+      "max": 4000,
+      "mean": 3999.4
+    },
+    "hybrid_rag": {
+      "min": 3961,
+      "max": 4000,
+      "mean": 3997.8
+    },
+    "graph_rag": {
+      "min": 3974,
+      "max": 4000,
+      "mean": 3998.1666666666665
+    }
+  },
+  "selected_record_types": {
+    "bm25": {
+      "task": 208,
+      "event": 40,
+      "postrun": 6,
+      "annotation": 2
+    },
+    "hybrid_rag": {
+      "postrun": 74,
+      "annotation": 182,
+      "task": 82,
+      "event": 42,
+      "relation": 17
+    },
+    "graph_rag": {
+      "terminal": 35,
+      "event": 111,
+      "postrun": 83,
+      "annotation": 137,
+      "task": 59,
+      "relation": 4
+    }
+  },
+  "queries_with_selected_graph_paths": 30,
+  "queries_with_different_hybrid_graph_contexts": 29,
+  "embedding_shape": [
+    1622,
+    1024
+  ],
+  "embedding_max_norm_error": 1.1920928955078125e-07,
+  "official_task_environment_checks_passed": 10,
+  "scored_solver_attempts": 0,
+  "automatic_start": false,
+  "checks": [
+    "frozen code/config/corpus/context hashes",
+    "all 150 token budgets",
+    "source offsets and nonoverlap",
+    "shared hybrid/graph seeds",
+    "100 candidate and two-hop bounds",
+    "graph path edge membership, direction and continuity",
+    "identical checklists",
+    "disjoint source/development/pilot IDs",
+    "finite normalized embeddings"
+  ],
+  "limitations": [
+    "No solver outcomes yet.",
+    "Graph exposure is not evidence of usefulness.",
+    "Source citation diagnostic is not independent unseen-task relevance."
+  ]
+}

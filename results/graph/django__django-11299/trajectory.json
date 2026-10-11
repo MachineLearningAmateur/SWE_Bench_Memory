@@ -28,7 +28,7 @@
             "effort": "medium"
           },
           "api_base": "https://james-zhang-hub-01.services.ai.azure.com/openai/v1/",
-          "api_key": "<REDACTED-SECRET>"
+          "api_key": "[REDACTED_CREDENTIAL]"
         },
         "litellm_model_registry": null,
         "set_cache_control": null,
