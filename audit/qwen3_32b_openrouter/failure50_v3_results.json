@@ -1,0 +1,1396 @@
+{
+  "run": "results/failure50_qwen3_32b_v3",
+  "manifest": {
+    "created_utc": "2026-10-15T08:52:03.936037+00:00",
+    "study": "Failure50 problems and trace contexts, OpenRouter solver",
+    "source_experiment": "results/failure50_verified10_v1",
+    "source_manifest_sha256": "976a80d80534c9f105499c676c985d3d1cbd97e9f141d1dd72c151ae8943959e",
+    "trace_source_commit": "267e00c456f273efb2b41f6d0717be1c74c4f941",
+    "corpus_sha256": "76181f7bd396843059771f09a7c0ea49efb5d714bf257511c7ca642cd0b11db9",
+    "conditions": [
+      "no_memory",
+      "checklist",
+      "bm25",
+      "hybrid_rag",
+      "graph_rag"
+    ],
+    "attempts_per_condition": 1,
+    "tasks_sha256": "88d7fdaf1130b7d07859e79e8d15fd1f509cf884d3a95df4e50de76a6934fb5c",
+    "action_format": "text",
+    "model_profile": "qwen3_32b_openrouter",
+    "provider": "openrouter",
+    "model_name": "openrouter/qwen/qwen3-32b",
+    "model_settings": {
+      "drop_params": true,
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "max_tokens": 8192,
+      "extra_body": {
+        "top_k": 20,
+        "provider": {
+          "require_parameters": false,
+          "order": [
+            "deepinfra"
+          ],
+          "allow_fallbacks": false
+        }
+      }
+    },
+    "context_limit_policy": "A context-window overflow (ContextWindowExceededError, or a BadRequestError reporting the maximum context length) ends the attempt unresolved; the batch continues.",
+    "versions": {
+      "mini-swe-agent": "2.4.6",
+      "swebench": "5.0.2",
+      "litellm": "1.102.1"
+    },
+    "source_sha256": {
+      "src/experiment.py": "20a5557451596af966846c56e5a7e17938f42e45c04a22172526cb4447ae762c",
+      "src/openrouter_failure50.py": "262815060415640cc2efbf501e2b150caa37cf5d25caff9504e9c3999dde121d",
+      "src/openrouter_profile.py": "6902e2de0311eaca181aba6ef828558b181bd570040a1394b307d5e652b9ac5c",
+      "src/gpt_oss_tool_model.py": "a76be1abefa52a42764290c4b53b33ec7b95ceaa24c00c0a486f6591f597a6ec",
+      "src/openrouter_textbased_model.py": "ea4693592ab644451d792c086399965784cdbe6e68eecfe570f7ac9225b3418c",
+      "src/verified_batch.py": "a4b6e02ca0708fa7a6c37a5efacd9c51fbfa276ed3730804d8a2084014e73399",
+      "src/evaluate.py": "a58b758673068fbc9f40120271e8936682930cb703a9461531de538fcc09ebee",
+      "src/verified_report.py": "d59f30aac80733a3d4e094226e9e06e240865f18512652ebc0b32cd968f0d2ec",
+      "config/models/qwen3_32b_openrouter.yaml": "5e0ac97107218ec9c5eea6b6a46ef572775c0e0f647fc24396632751429d05c5"
+    },
+    "git_commit": "00e96345173bd183ed51fb416b5c81e266ca9587"
+  },
+  "trial_order": [
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "graph_rag"
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "hybrid_rag"
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "bm25"
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "checklist"
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "no_memory"
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "graph_rag"
+    }
+  ],
+  "resolved": {
+    "no_memory": 2,
+    "checklist": 0,
+    "bm25": 0,
+    "hybrid_rag": 0,
+    "graph_rag": 1
+  },
+  "denominator_per_condition": 10,
+  "grading": {
+    "no_memory": {
+      "report": "openrouter__qwen__qwen3-32b.failure50_qwen3_32b_v3_no_memory.json",
+      "report_sha256": "84e12a4828447613daf2d16f2553bc6307b1a87e983754e5c1fec3b66feb5d14",
+      "resolved_ids": [
+        "psf__requests-1921",
+        "pylint-dev__pylint-7277"
+      ],
+      "rejected": {}
+    },
+    "checklist": {
+      "report": "openrouter__qwen__qwen3-32b.failure50_qwen3_32b_v3_checklist.json",
+      "report_sha256": "cf77f6cf259a496122f9c0c153b32a7ea4b8cdf76c7c067767301541bb1ffc2b",
+      "resolved_ids": [],
+      "rejected": {}
+    },
+    "bm25": {
+      "report": "openrouter__qwen__qwen3-32b.failure50_qwen3_32b_v3_bm25.json",
+      "report_sha256": "92b0746766be5f48a9fab00fafe156de4546f096277a609cc9d4fb0b5433f371",
+      "resolved_ids": [],
+      "rejected": {}
+    },
+    "hybrid_rag": {
+      "report": "openrouter__qwen__qwen3-32b.failure50_qwen3_32b_v3_hybrid_rag.json",
+      "report_sha256": "2311a332006ae5671c830ef5faea9eb82a01e97fd576e5c9d4524e37d23a01ff",
+      "resolved_ids": [],
+      "rejected": {}
+    },
+    "graph_rag": {
+      "report": "openrouter__qwen__qwen3-32b.failure50_qwen3_32b_v3_graph_rag.json",
+      "report_sha256": "90c3af47b401d7635ce16bee73d3363fef0c8eb7dc1d28f6e81777054de57e78",
+      "resolved_ids": [
+        "psf__requests-1921"
+      ],
+      "rejected": {}
+    }
+  },
+  "exit_statuses": {
+    "no_memory": {
+      "Submitted": 9,
+      "TimeExceeded": 1
+    },
+    "checklist": {
+      "Submitted": 10
+    },
+    "bm25": {
+      "Submitted": 8,
+      "null": 1,
+      "RepeatedFormatError": 1
+    },
+    "hybrid_rag": {
+      "Submitted": 9,
+      "null": 1
+    },
+    "graph_rag": {
+      "RepeatedFormatError": 1,
+      "Submitted": 9
+    }
+  },
+  "usage": {
+    "no_memory": {
+      "input_tokens": 1287515,
+      "output_tokens": 189242,
+      "calls_with_usage": 139,
+      "model_calls": 139,
+      "format_errors": 11,
+      "elapsed_seconds": 6835.317579269409,
+      "nonempty_submissions": 5,
+      "context_limit_exits": 0
+    },
+    "checklist": {
+      "input_tokens": 287375,
+      "output_tokens": 68669,
+      "calls_with_usage": 69,
+      "model_calls": 69,
+      "format_errors": 5,
+      "elapsed_seconds": 2520.3732068538666,
+      "nonempty_submissions": 2,
+      "context_limit_exits": 0
+    },
+    "bm25": {
+      "input_tokens": 1758147,
+      "output_tokens": 164504,
+      "calls_with_usage": 166,
+      "model_calls": 167,
+      "format_errors": 16,
+      "elapsed_seconds": 5825.049112558365,
+      "nonempty_submissions": 5,
+      "context_limit_exits": 1
+    },
+    "hybrid_rag": {
+      "input_tokens": 923126,
+      "output_tokens": 121076,
+      "calls_with_usage": 106,
+      "model_calls": 107,
+      "format_errors": 13,
+      "elapsed_seconds": 3975.7410595417023,
+      "nonempty_submissions": 4,
+      "context_limit_exits": 1
+    },
+    "graph_rag": {
+      "input_tokens": 1056674,
+      "output_tokens": 178006,
+      "calls_with_usage": 127,
+      "model_calls": 127,
+      "format_errors": 17,
+      "elapsed_seconds": 5988.01654624939,
+      "nonempty_submissions": 2,
+      "context_limit_exits": 0
+    }
+  },
+  "failure_categories": {
+    "total": {
+      "empty_no_edit": 7,
+      "empty_edit_no_change": 20,
+      "wrong_patch": 15,
+      "repeated_format_error": 2,
+      "context_overflow": 2,
+      "resolved": 3,
+      "time_limit": 1
+    },
+    "by_condition": {
+      "no_memory": {
+        "empty_no_edit": 2,
+        "empty_edit_no_change": 2,
+        "resolved": 2,
+        "wrong_patch": 3,
+        "time_limit": 1
+      },
+      "checklist": {
+        "empty_edit_no_change": 6,
+        "empty_no_edit": 2,
+        "wrong_patch": 2
+      },
+      "bm25": {
+        "wrong_patch": 5,
+        "empty_edit_no_change": 2,
+        "context_overflow": 1,
+        "empty_no_edit": 1,
+        "repeated_format_error": 1
+      },
+      "hybrid_rag": {
+        "empty_edit_no_change": 5,
+        "context_overflow": 1,
+        "wrong_patch": 4
+      },
+      "graph_rag": {
+        "repeated_format_error": 1,
+        "empty_edit_no_change": 5,
+        "empty_no_edit": 2,
+        "wrong_patch": 1,
+        "resolved": 1
+      }
+    }
+  },
+  "replay_method": "Commands replayed in order in a clean evaluation container with mini-swe-agent's swebench environment (cwd /testbed, bash -c, agent env vars)",
+  "trials": [
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "no_memory",
+      "resolved": false,
+      "category": "empty_no_edit",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 4,
+      "source_edit_commands": 0,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 1,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 961.5
+    },
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 4,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 427.3,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 13,
+      "source_edit_commands": 3,
+      "failed_sed_commands": 2,
+      "format_errors": 2,
+      "output_limit_stops": 1,
+      "patch_chars": 1080,
+      "patch_sha256": "828e519ba8a345b17db712b15929bbae7bafec9b52f355a7bd367d9cfcc01e76",
+      "grader_failure_reason": "no_tests_collected",
+      "elapsed_seconds": 1495.6
+    },
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 12,
+      "source_edit_commands": 6,
+      "failed_sed_commands": 0,
+      "format_errors": 2,
+      "output_limit_stops": 2,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 1099.6,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": [
+          "test_skycoord.py"
+        ]
+      }
+    },
+    {
+      "instance_id": "astropy__astropy-14096",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "repeated_format_error",
+      "exit_status": "RepeatedFormatError",
+      "error_type": null,
+      "commands": 6,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 7,
+      "output_limit_stops": 7,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 2678.0
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 6,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 96.3,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 6,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 96.6,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 7,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 2,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 172.8,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 10,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 269.2,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": [
+          "models.py"
+        ]
+      }
+    },
+    {
+      "instance_id": "django__django-12713",
+      "condition": "no_memory",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 10,
+      "source_edit_commands": 4,
+      "failed_sed_commands": 1,
+      "format_errors": 2,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 347.3,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 7,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 210.1,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 6,
+      "source_edit_commands": 4,
+      "failed_sed_commands": 1,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 196.0,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "empty_no_edit",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 6,
+      "source_edit_commands": 0,
+      "failed_sed_commands": 0,
+      "format_errors": 2,
+      "output_limit_stops": 1,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 391.0
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "no_memory",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 14,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 2,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 327.4,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": [
+          "test_literalinclude.py",
+          "test_literalinclude/test_root/index.rst",
+          "test_literalinclude/test_root/pom.xml"
+        ]
+      }
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-10323",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "empty_no_edit",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 5,
+      "source_edit_commands": 0,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 197.2
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "context_overflow",
+      "exit_status": null,
+      "error_type": "BadRequestError",
+      "commands": 14,
+      "source_edit_commands": 3,
+      "failed_sed_commands": 2,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 375.7
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 6,
+      "source_edit_commands": 2,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 637,
+      "patch_sha256": "8665d58779253c5cb72cfef54e2bc216a04668ecc325c248b58f51c3c647d46a",
+      "grader_failure_reason": "missing_module",
+      "elapsed_seconds": 100.5
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "no_memory",
+      "resolved": true,
+      "category": "resolved",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 3,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 578,
+      "patch_sha256": "228afd5ac8cb629b70c6b25a8279bbca126b24631f2731509e6e9b3b4d8be987",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 86.9
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 5,
+      "source_edit_commands": 2,
+      "failed_sed_commands": 1,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 386,
+      "patch_sha256": "acf79966277b41e9bfefd7c3350c14588632d458a2b4ccf184fdce7e0b01b5ab",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 166.0
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "context_overflow",
+      "exit_status": null,
+      "error_type": "BadRequestError",
+      "commands": 61,
+      "source_edit_commands": 13,
+      "failed_sed_commands": 40,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 1848.3
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "graph_rag",
+      "resolved": true,
+      "category": "resolved",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 24,
+      "source_edit_commands": 7,
+      "failed_sed_commands": 0,
+      "format_errors": 3,
+      "output_limit_stops": 0,
+      "patch_chars": 1716,
+      "patch_sha256": "ec9d31fde62abc348ac772ddc08068309b306894d099c203ae948f307cc85954",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 1099.9
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "no_memory",
+      "resolved": true,
+      "category": "resolved",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 8,
+      "source_edit_commands": 2,
+      "failed_sed_commands": 1,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 687,
+      "patch_sha256": "353e376ad2d82240863178235d7700e4cc4a6e5984c3199d2e94f9c22d1f86b3",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 219.0
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 5,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 645,
+      "patch_sha256": "09d4932ca41e19616970569c5ab43919bcfcd0e106e0e0738f3ef82081a3c556",
+      "grader_failure_reason": "no_tests_collected",
+      "elapsed_seconds": 265.5
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 6,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 2,
+      "output_limit_stops": 0,
+      "patch_chars": 528,
+      "patch_sha256": "eb2e8d510cffb6dc4c5c660a8df5103875210abfc6a7e1d2c5c382029e2518bf",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 517.6
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 15,
+      "source_edit_commands": 8,
+      "failed_sed_commands": 5,
+      "format_errors": 2,
+      "output_limit_stops": 0,
+      "patch_chars": 731,
+      "patch_sha256": "be9f7e5d42608781022afde484b3011577360acd4acab515bab8addd31b8728d",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 617.7
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 8,
+      "source_edit_commands": 5,
+      "failed_sed_commands": 1,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 203.2,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 10,
+      "source_edit_commands": 5,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 281.8,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 8,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 1049,
+      "patch_sha256": "09145b20d70328b2001d939816612550197f61ba34a054160b5dd093cf2db989",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 165.6
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 8,
+      "source_edit_commands": 4,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 192.2,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-22865",
+      "condition": "no_memory",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 8,
+      "source_edit_commands": 4,
+      "failed_sed_commands": 2,
+      "format_errors": 3,
+      "output_limit_stops": 1,
+      "patch_chars": 1049,
+      "patch_sha256": "09145b20d70328b2001d939816612550197f61ba34a054160b5dd093cf2db989",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 547.0
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "no_memory",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 9,
+      "source_edit_commands": 2,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 396,
+      "patch_sha256": "138c06ca79925041385712f539d35bb37f52a06d9fea79652fb23596e1cb2e39",
+      "grader_failure_reason": "no_tests_collected",
+      "elapsed_seconds": 253.3
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 22,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 2,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 560.5,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": [
+          "src/conftest.py",
+          "src/python/PIsys/__init__.py",
+          "src/python/PIsys/conftest.py",
+          "src/python/PIsys/test_example.py"
+        ]
+      }
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 9,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 512,
+      "patch_sha256": "74374965aa71ec06b74074a391b999b96d133847795ae30a8c5e927616e0843f",
+      "grader_failure_reason": "no_tests_collected",
+      "elapsed_seconds": 189.2
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 11,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 413,
+      "patch_sha256": "4f2e602bd0713db4bb8acab148f7fc76487821cfa67023892a1938961f5012ef",
+      "grader_failure_reason": "no_tests_collected",
+      "elapsed_seconds": 267.0
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5840",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "empty_no_edit",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 11,
+      "source_edit_commands": 0,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 611.8
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 8,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 206.4,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": [
+          "test_script.py"
+        ]
+      }
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "no_memory",
+      "resolved": false,
+      "category": "empty_no_edit",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 4,
+      "source_edit_commands": 0,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 105.9
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "empty_no_edit",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 8,
+      "source_edit_commands": 0,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 242.2
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 9,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 785,
+      "patch_sha256": "05ef3cc9cc7b67fd580774603d99115650169a5c27348618433021e0aa255574",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 218.4
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-13124",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "empty_no_edit",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 8,
+      "source_edit_commands": 0,
+      "failed_sed_commands": 0,
+      "format_errors": 3,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 326.1
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 11,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 2,
+      "output_limit_stops": 0,
+      "patch_chars": 587,
+      "patch_sha256": "8220e8b356421c28f07d7f3e1ac60b7f8f7d8bdc50099e91a287bdc78b23e2ab",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 353.1
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 3,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 67.1,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "no_memory",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 5,
+      "source_edit_commands": 2,
+      "failed_sed_commands": 1,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 800,
+      "patch_sha256": "3d52a133a8e0250233cd6126c8aea9e989d271ac2721ae85f7a4f3700f192807",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 355.4
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 4,
+      "source_edit_commands": 2,
+      "failed_sed_commands": 0,
+      "format_errors": 0,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 91.0,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "pydata__xarray-6992",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 6,
+      "source_edit_commands": 4,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 441.1,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": []
+      }
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "hybrid_rag",
+      "resolved": false,
+      "category": "wrong_patch",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 5,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 2,
+      "output_limit_stops": 1,
+      "patch_chars": 585,
+      "patch_sha256": "18f0fe2036649365bcca2f07565cea5a66031d70c82e98cd8442378a969e054c",
+      "grader_failure_reason": null,
+      "elapsed_seconds": 383.5
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "bm25",
+      "resolved": false,
+      "category": "repeated_format_error",
+      "exit_status": "RepeatedFormatError",
+      "error_type": null,
+      "commands": 19,
+      "source_edit_commands": 7,
+      "failed_sed_commands": 0,
+      "format_errors": 4,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 545.1
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "checklist",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 9,
+      "source_edit_commands": 2,
+      "failed_sed_commands": 1,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 290.5,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": [
+          "test_hstack.py"
+        ]
+      }
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "no_memory",
+      "resolved": false,
+      "category": "time_limit",
+      "exit_status": "TimeExceeded",
+      "error_type": null,
+      "commands": 63,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 58,
+      "format_errors": 1,
+      "output_limit_stops": 1,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 3631.7
+    },
+    {
+      "instance_id": "sympy__sympy-13031",
+      "condition": "graph_rag",
+      "resolved": false,
+      "category": "empty_edit_no_change",
+      "exit_status": "Submitted",
+      "error_type": null,
+      "commands": 16,
+      "source_edit_commands": 1,
+      "failed_sed_commands": 0,
+      "format_errors": 1,
+      "output_limit_stops": 0,
+      "patch_chars": 0,
+      "patch_sha256": null,
+      "grader_failure_reason": null,
+      "elapsed_seconds": 352.6,
+      "replay": {
+        "patch_txt_bytes": 0,
+        "tracked_diff": null,
+        "untracked_files": [
+          "test_hstack.py"
+        ]
+      }
+    }
+  ],
+  "interpretation": "Ten paired problems, one attempt per condition; exploratory, not a general memory advantage estimate."
+}

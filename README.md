@@ -94,6 +94,53 @@ The October comparison is recorded in
 [the ten-task results and analysis](docs/gpt_oss_20b_verified10_results.md),
 with its [numeric audit](audit/gpt_oss_20b/verified10_results.json).
 
+## OpenRouter alternative (Qwen3 32B)
+
+`src.openrouter_batch` runs the same ten-task comparison through OpenRouter
+instead of Azure: same seed-42 tasks, trial order, agent overrides, and
+graph_v2 memory settings as `src.verified_batch`. Only `OPENROUTER_API_KEY` is
+needed; set it in `.env` or in the host environment (Compose passes it through).
+The profile is `config/models/qwen3_32b_openrouter.yaml`; `OPENROUTER_MODEL`
+selects another OpenRouter model id and `OPENROUTER_PROVIDERS` changes the
+pinned provider order.
+
+```bash
+python -m src.openrouter_smoke
+python -m src.openrouter_batch --output results/NAME
+python -m src.openrouter_batch --output results/NAME --run
+```
+
+`src.openrouter_failure50` runs the Failure50 problems instead: the ten pilot
+tasks and the frozen trace contexts from `results/failure50_verified10_v1`,
+copied into a new output directory. The source experiment is only read.
+`--conditions` selects a subset of `no_memory,checklist,bm25,hybrid_rag,graph_rag`
+(default: all five, 50 trials, in the frozen balanced order). A context-window
+overflow ends that attempt unresolved; other trial errors stop the run.
+
+```bash
+python -m src.openrouter_failure50 prepare --output results/failure50_qwen3_32b_v1
+python -m src.openrouter_failure50 run --output results/failure50_qwen3_32b_v1
+```
+
+The profile pins DeepInfra (40,960-token context), the only Qwen3 32B endpoint
+the current account allows. DeepInfra does not enforce `tool_choice=required`;
+it behaves as `auto`, so a turn without a bash call becomes a mini-SWE-agent
+format error instead of a forced tool call. The smoke records this as
+`tool_choice_required_enforced` in `audit/qwen3_32b_openrouter/smoke.json`.
+`src.openrouter_failure50` therefore defaults to `--action-format text`
+(mini-SWE-agent's text-based format, one fenced command block per turn);
+`--action-format tool` keeps tool calls. The Azure GPT-OSS runs used enforced
+tool calls at temperature 0, so report this difference when comparing results.
+
+The October Qwen3 32B run is recorded in
+[the Failure50 results and failure analysis](docs/qwen3_32b_failure50_results.md),
+with its [per-trial audit](audit/qwen3_32b_openrouter/failure50_v3_results.json)
+(`python -m src.openrouter_failure_audit`).
+
+The OpenRouter code is in new files. `src/model_profiles.py`,
+`src/experiment.py`, and the other files hashed by the prepared Failure50
+experiment are unchanged.
+
 ## Important experimental rule
 
 Do **not** tune graph retrieval after looking at test-set outcomes without applying the same predeclared tuning procedure to the flat arm. Use development tasks for retrieval tuning, then freeze settings.

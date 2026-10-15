@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-10-15T08:14:28.665774+00:00",
+  "profile": "qwen3_32b_openrouter",
+  "model_name": "openrouter/qwen/qwen3-32b",
+  "served_model": "qwen/qwen3-32b",
+  "served_provider": [
+    "DeepInfra",
+    "DeepInfra",
+    "DeepInfra"
+  ],
+  "provider_routing": {
+    "require_parameters": false,
+    "order": [
+      "deepinfra"
+    ],
+    "allow_fallbacks": false
+  },
+  "bash_tool_two_turns": true,
+  "tool_choice_required_enforced": false
+}

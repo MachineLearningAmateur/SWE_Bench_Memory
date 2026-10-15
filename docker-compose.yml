@@ -10,4 +10,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     env_file:
       - .env
+    # Pass host values through when they are not in .env (OpenRouter profile).
+    environment:
+      - OPENROUTER_API_KEY
+      - OPENROUTER_MODEL
+      - OPENROUTER_PROVIDERS
     command: sleep infinity

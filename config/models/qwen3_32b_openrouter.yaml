@@ -1,0 +1,32 @@
+# OpenRouter alternative to the Azure endpoints. Resolved by src/openrouter_profile.py,
+# not src/model_profiles.py, so frozen experiment hashes are unchanged.
+provider: openrouter
+model_class: litellm
+# LiteLLM model string is openrouter/<model_id>. OPENROUTER_MODEL overrides the id.
+model_id: qwen/qwen3-32b
+model_id_env: OPENROUTER_MODEL
+api_base: https://openrouter.ai/api/v1
+api_base_env: OPENROUTER_API_BASE
+api_key_env: OPENROUTER_API_KEY
+# Qwen3 thinking-mode sampling. Greedy decoding (temperature 0) looped in the
+# reasoning and in repeated commands on all three trials of failure50_qwen3_32b_v1.
+temperature: 0.6
+top_p: 0.95
+top_k: 20
+# Explicit output cap: without it OpenRouter fills the 40,960-token window and
+# DeepInfra rejects the request (off by one) once prompts pass ~24.6k tokens.
+max_tokens: 8192
+drop_params: true
+# Pin one provider so every trial uses the same serving stack. DeepInfra (fp8,
+# 40,960-token context) is the only Qwen3 32B endpoint the account allows as of
+# 2026-10-14. OpenRouter does not list tool_choice=required for it, so
+# require_parameters must stay false; DeepInfra then treats required as auto
+# (src.openrouter_smoke records this). Tenstorrent's 20k context is too short.
+# OPENROUTER_PROVIDERS=a,b replaces the order; OPENROUTER_PROVIDERS=any removes the pin.
+provider_routing:
+  require_parameters: false
+  order: [deepinfra]
+  allow_fallbacks: false
+per_run_cost_limit_usd: 0
+step_limit: 100
+wall_time_limit_seconds: 3600
